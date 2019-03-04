@@ -1,0 +1,68 @@
+{% trans_default_domain 'matrix_fieldtype' %}
+
+{% set fieldtype_name = 'ezmatrix.name'|trans({}, 'fieldtypes')|desc('Matrix') %}
+
+{% block ezmatrix_field_definition_edit %}
+    <div class="ez-matrix-settings__minimum-rows">
+        {{- form_label(form.minimum_rows, null, { 'label_attr': { 'class': 'ez-label' } }) -}}
+        {{- form_errors(form.minimum_rows) -}}
+        {{- form_widget(form.minimum_rows) -}}
+    </div>
+
+    <div class="ez-matrix-settings__columns">
+        <script type="text/template" class="ez-matrix-settings__column-template">
+            <tr class="ez-matrix-settings__column">
+                <td>
+                    <input type="checkbox" class="ez-matrix-settings__column-checkbox">
+                </td>
+                <td>
+                    {{ form_widget(form.columns.vars.prototype.name) }}
+                </td>
+                <td>
+                    {{ form_widget(form.columns.vars.prototype.identifier) }}
+                </td>
+            </tr>
+        </script>
+        {{ form_label(form.columns, null, { 'label_attr': { 'class': 'ez-label' } }) }}
+        {{ form_errors(form.columns) }}
+        <div class="ez-table-header">
+            <div class="ez-table-header__headline">{{ 'field.columns'|trans|desc('Columns') }}</div>
+            <div>
+                <button type="button" class="btn btn-primary ez-btn--add-column">
+                    <svg class="ez-icon ez-icon--create">
+                        <use xlink:href="{{ asset('bundles/ezplatformadminui/img/ez-icons.svg') }}#create"></use>
+                    </svg>
+                </button>
+                <button type="button" class="btn btn-danger ez-btn--remove-column">
+                    <svg class="ez-icon ez-icon--trash">
+                        <use xlink:href="{{ asset('bundles/ezplatformadminui/img/ez-icons.svg') }}#trash"></use>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <table class="ez-table table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>{{ 'field.column.name'|trans|desc('Name') }}</th>
+                    <th>{{ 'field.column.identifier'|trans|desc('Identifier') }}</th>
+                </tr>
+            </thead>
+            <tbody class="ez-table__body">
+                {% for column in form.columns %}
+                    <tr class="ez-matrix-settings__column">
+                        <td>
+                            <input type="checkbox" class="ez-matrix-settings__column-checkbox">
+                        </td>
+                        <td>
+                            {{ form_widget(column.name) }}
+                        </td>
+                        <td>
+                            {{ form_widget(column.identifier) }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,29 @@
+parameters:
+    ezplatform.fieldtype.matrix.identifier: 'ezmatrix'
+
+services:
+    _defaults:
+        autoconfigure: true
+        autowire: true
+        public: false
+
+    EzSystems\EzPlatformMatrixFieldtype\FieldType\Type:
+        autoconfigure: false
+        autowire: true
+        public: true
+        parent: ezpublish.fieldType
+        arguments:
+            $fieldTypeIdentifier: '%ezplatform.fieldtype.matrix.identifier%'
+        tags:
+            - { name: ezpublish.fieldType, alias: '%ezplatform.fieldtype.matrix.identifier%' }
+
+    EzSystems\EzPlatformMatrixFieldtype\FieldType\Converter\StorageValue\StorageValueConverterFactory: ~
+
+    EzSystems\EzPlatformMatrixFieldtype\FieldType\Converter\MatrixConverter:
+        tags:
+            - { name: ezpublish.storageEngine.legacy.converter, alias: '%ezplatform.fieldtype.matrix.identifier%' }
+
+    EzSystems\EzPlatformMatrixFieldtype\FieldType\Mapper\MatrixFormMapper:
+        tags:
+            - { name: ez.fieldFormMapper.definition, fieldType: '%ezplatform.fieldtype.matrix.identifier%' }
+            - { name: ez.fieldFormMapper.value, fieldType: '%ezplatform.fieldtype.matrix.identifier%' }
