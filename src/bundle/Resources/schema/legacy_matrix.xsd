@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  ~ @copyright Copyright (C) eZ Systems AS. All rights reserved.
+  ~ @license For full copyright and license information view LICENSE file distributed with this source code.
+  -->
+
+<!--
+  ~ @copyright Copyright (C) eZ Systems AS. All rights reserved.
+  ~ @license For full copyright and license information view LICENSE file distributed with this source code.
+  -->
+
+<!-- Legacy ezmatrix format:
+
+<?xml version="1.0" encoding="utf-8"?>
+<ezmatrix>
+    <name/>
+    <columns number="4">
+        <column id="beverage" num="0">Beverage</column>
+        <column id="appetizer" num="1">Appetizer</column>
+        <column id="main" num="2">Main Course</column>
+        <column id="dessert" num="3">Dessert</column>
+    </columns>
+    <rows number="2"/>
+    <c>Water</c>
+    <c>Salad</c>
+    <c>Steak</c>
+    <c>Pie</c>
+    <c>Beer</c>
+    <c>Wings</c>
+    <c>Pizza</c>
+    <c>Ice Cream</c>
+</ezmatrix>
+
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="ezmatrix">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+                <xs:element name="columns">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="column">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:attribute name="num" type="xs:integer" use="required"/>
+                                            <xs:attribute name="id" type="xs:string" use="required"/>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="number" type="xs:integer" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="rows">
+                    <xs:complexType>
+                        <xs:attribute name="number" type="xs:integer" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="c" type="xs:string" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

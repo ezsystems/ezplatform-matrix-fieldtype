@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="fa41ae6cab6d74c6548f4052c02c0c5129a27f1d" resname="field.column.identifier">
+        <source>Identifier</source>
+        <target state="new">Identifier</target>
+        <note>key: field.column.identifier</note>
+      </trans-unit>
+      <trans-unit id="34311ae1b06f664d26af7e6472d8e44eed4c7048" resname="field.column.name">
+        <source>Name</source>
+        <target state="new">Name</target>
+        <note>key: field.column.name</note>
+      </trans-unit>
+      <trans-unit id="4c6c52e859ac63f2403af879ec879b00dfdbef19" resname="field.columns">
+        <source>Columns</source>
+        <target state="new">Columns</target>
+        <note>key: field.columns</note>
+      </trans-unit>
+      <trans-unit id="207b1ea4ef32f10b29a4cff6869126da1f4b980a" resname="field_definition.ezmatrix.columns">
+        <source>Columns</source>
+        <target state="new">Columns</target>
+        <note>key: field_definition.ezmatrix.columns</note>
+      </trans-unit>
+      <trans-unit id="07c51cf854c53ebcc11d9261c7ca5b0772d7f7a4" resname="field_definition.ezmatrix.minimum_rows">
+        <source>Minimum number of rows</source>
+        <target state="new">Minimum number of rows</target>
+        <note>key: field_definition.ezmatrix.minimum_rows</note>
+      </trans-unit>
+      <trans-unit id="fc0bcd313cd08b3ce3b2380d4cc714c20047a5c0" resname="fieldtype.column.identifier">
+        <source>Identifier</source>
+        <target state="new">Identifier</target>
+        <note>key: fieldtype.column.identifier</note>
+      </trans-unit>
+      <trans-unit id="9fba35041bf8d815e178fa77540c6e1fec6e322f" resname="fieldtype.column.name">
+        <source>Name</source>
+        <target state="new">Name</target>
+        <note>key: fieldtype.column.name</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

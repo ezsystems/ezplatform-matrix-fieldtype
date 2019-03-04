@@ -1,0 +1,52 @@
+{% block ezplatform_fieldtype_ezmatrix_widget %}
+    <script type="text/template" class="ez-data-source__entry-template">
+        {{ form_row(form.entries.vars.prototype) }}
+    </script>
+    <div class="ez-table-header ground-base">
+        <div class="ez-table-header__headline">
+            {{ form_label(form) }}
+        </div>
+        <div>
+            <button type="button" class="btn btn-primary ez-btn--add-matrix-entry">
+                <svg class="ez-icon ez-icon-edit">
+                    <use xlink:href="{{ asset('bundles/ezplatformadminui/img/ez-icons.svg') }}#create"></use>
+                </svg>
+            </button>
+            <button type="button" class="btn btn-danger ez-btn--remove-matrix-entry">
+                <svg class="ez-icon ez-icon-edit">
+                    <use xlink:href="{{ asset('bundles/ezplatformadminui/img/ez-icons.svg') }}#trash"></use>
+                </svg>
+            </button>
+        </div>
+    </div>
+    <table class="ez-table table">
+        <thead>
+        <tr>
+            <th></th>
+            {% for column in columns %}
+                <th data-identifier="{{ column['identifier'] }}">{{ column['name'] }}</th>
+            {% endfor %}
+        </tr>
+        </thead>
+        <tbody class="ez-table__body" data-minimum-rows="{{ minimum_rows }}">
+            {{ form_widget(form) }}
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block ezplatform_fieldtype_ezmatrix_entry_row %}
+    <tr class="ez-table__matrix-entry">
+        <td>
+            <input type="checkbox" class="ez-table__ezmatrix-entry-checkbox">
+        </td>
+        {% for input in form.children %}
+            <td>
+                {{ form_widget(input) }}
+            </td>
+        {% endfor %}
+    </tr>
+{% endblock %}
+
+{% block _ezrepoforms_content_edit_fieldsData_entry_value_entries_entry_cell_widget %}
+    {{ form_widget(form) }}
+{% endblock %}
