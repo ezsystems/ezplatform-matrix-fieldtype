@@ -8,12 +8,10 @@ declare(strict_types=1);
 
 namespace EzSystems\EzPlatformMatrixFieldtype\Form\Type\FieldType;
 
-use EzSystems\EzPlatformMatrixFieldtype\FieldType\Value;
 use EzSystems\EzPlatformMatrixFieldtype\FieldType\Value\Row;
 use EzSystems\EzPlatformMatrixFieldtype\FieldType\Value\RowsCollection;
+use EzSystems\EzPlatformMatrixFieldtype\Form\Transformer\FieldTypeModelTransformer;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\DataTransformerInterface;
-use Symfony\Component\Form\Exception\TransformationFailedException;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
@@ -91,51 +89,6 @@ class MatrixFieldType extends AbstractType
             $value->setRows(new RowsCollection($rows ?? []));
         });
 
-        $builder->addModelTransformer(new class() implements DataTransformerInterface {
-            /**
-             * Transforms a value from the original representation to a transformed representation.
-             *
-             * @param mixed $value The value in the original representation
-             *
-             * @return mixed The value in the transformed representation
-             *
-             * @throws TransformationFailedException when the transformation fails
-             */
-            public function transform($value)
-            {
-                $hash['entries'] = [];
-
-                foreach ($value->getRows() as $row) {
-                    $hash['entries'][] = $row->getCells();
-                }
-
-                return $hash;
-            }
-
-            /**
-             * Transforms a value from the transformed representation to its original
-             * representation.
-             *
-             * @param mixed $value The value in the transformed representation
-             *
-             * @return mixed The value in the original representation
-             *
-             * @throws TransformationFailedException when the transformation fails
-             */
-            public function reverseTransform($value)
-            {
-                $entries = $value['entries'] ?? [];
-
-                foreach ($entries as $entry) {
-                    $row = new Row($entry);
-
-                    if (!$row->isEmpty()) {
-                        $rows[] = $row;
-                    }
-                }
-
-                return new Value($rows ?? []);
-            }
-        });
+        $builder->addModelTransformer(new FieldTypeModelTransformer());
     }
 }

@@ -14,17 +14,11 @@ use eZ\Publish\Core\FieldType\ValidationError;
 use eZ\Publish\Core\FieldType\Value as FieldTypeValue;
 use eZ\Publish\SPI\FieldType\Value as SPIValue;
 use EzSystems\EzPlatformMatrixFieldtype\FieldType\Value\Row;
-use EzSystems\EzPlatformMatrixFieldtype\FieldType\Value\RowsCollection;
 
 class Type extends FieldType
 {
     /**
-     * The setting keys which are available on this field type.
-     *
-     * The key is the setting name, and the value is the default value for given
-     * setting, set to null if no particular default should be set.
-     *
-     * @var mixed
+     * {@inheritdoc}
      */
     protected $settingsSchema = [
         'minimum_rows' => [
@@ -49,22 +43,7 @@ class Type extends FieldType
     }
 
     /**
-     * Returns information for FieldValue->$sortKey relevant to the field type.
-     *
-     * Return value is mixed. It should be something which is sensible for
-     * sorting.
-     *
-     * It is up to the persistence implementation to handle those values.
-     * Common string and integer values are safe.
-     *
-     * For the legacy storage it is up to the field converters to set this
-     * value in either sort_key_string or sort_key_int.
-     *
-     * In case of multi value, values should be string and separated by "-" or ",".
-     *
-     * @param \eZ\Publish\Core\FieldType\Value $value
-     *
-     * @return mixed
+     * {@inheritdoc}
      */
     protected function getSortInfo(FieldTypeValue $value)
     {
@@ -72,14 +51,7 @@ class Type extends FieldType
     }
 
     /**
-     * Validates the fieldSettings of a FieldDefinitionCreateStruct or FieldDefinitionUpdateStruct.
-     *
-     * This method expects that given $fieldSettings are complete, for this purpose method
-     * {@link self::applyDefaultSettings()} is provided.
-     *
-     * @param mixed $fieldSettings
-     *
-     * @return \eZ\Publish\SPI\FieldType\ValidationError[]
+     * {@inheritdoc}
      */
     public function validateFieldSettings($fieldSettings): array
     {
@@ -87,25 +59,7 @@ class Type extends FieldType
     }
 
     /**
-     * Inspects given $inputValue and potentially converts it into a dedicated value object.
-     * If given $inputValue could not be converted or is already an instance of dedicate value object,
-     * the method should simply return it.
-     * This is an operation method for {@see acceptValue()}.
-     * Example implementation:
-     * <code>
-     *  protected function createValueFromInput( $inputValue )
-     *  {
-     *      if ( is_array( $inputValue ) )
-     *      {
-     *          $inputValue = \eZ\Publish\Core\FieldType\CookieJar\Value( $inputValue );
-     *      }
-     *      return $inputValue;
-     *  }
-     * </code>.
-     *
-     * @param mixed $inputValue
-     *
-     * @return mixed the potentially converted input value
+     * {@inheritdoc}
      */
     protected function createValueFromInput($inputValue)
     {
@@ -117,14 +71,7 @@ class Type extends FieldType
     }
 
     /**
-     * Returns the field type identifier for this field type.
-     * This identifier should be globally unique and the implementer of a
-     * FieldType must take care for the uniqueness. It is therefore recommended
-     * to prefix the field-type identifier by a unique string that identifies
-     * the implementer. A good identifier could for example take your companies main
-     * domain name as a prefix in reverse order.
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function getFieldTypeIdentifier(): string
     {
@@ -132,16 +79,7 @@ class Type extends FieldType
     }
 
     /**
-     * Returns a human readable string representation from the given $value.
-     * It will be used to generate content name and url alias if current field
-     * is designated to be used in the content name/urlAlias pattern.
-     * The used $value can be assumed to be already accepted by {@link * acceptValue()}.
-     *
-     * @param \eZ\Publish\SPI\FieldType\Value $value
-     *
-     * @return string
-     *
-     * @deprecated Since 6.3/5.4.7, use \eZ\Publish\SPI\FieldType\Nameable
+     * {@inheritdoc}
      */
     public function getName(SPIValue $value): string
     {
@@ -149,13 +87,7 @@ class Type extends FieldType
     }
 
     /**
-     * Returns the empty value for this field type.
-     * This value will be used, if no value was provided for a field of this
-     * type and no default value was specified in the field definition. It is
-     * also used to determine that a user intentionally (or unintentionally) did not
-     * set a non-empty value.
-     *
-     * @return \eZ\Publish\SPI\FieldType\Value
+     * {@inheritdoc}
      */
     public function getEmptyValue(): SPIValue
     {
@@ -167,15 +99,7 @@ class Type extends FieldType
     }
 
     /**
-     * Converts an $hash to the Value defined by the field type.
-     * This is the reverse operation to {@link toHash()}. At least the hash
-     * format generated by {@link toHash()} must be converted in reverse.
-     * Additional formats might be supported in the rare case that this is
-     * necessary. See the class description for more details on a hash format.
-     *
-     * @param mixed $hash
-     *
-     * @return \eZ\Publish\SPI\FieldType\Value
+     * {@inheritdoc}
      */
     public function fromHash($hash): SPIValue
     {
@@ -187,25 +111,7 @@ class Type extends FieldType
     }
 
     /**
-     * Throws an exception if value structure is not of expected format.
-     * Note that this does not include validation after the rules
-     * from validators, but only plausibility checks for the general data
-     * format.
-     * This is an operation method for {@see acceptValue()}.
-     * Example implementation:
-     * <code>
-     *  protected function checkValueStructure( Value $value )
-     *  {
-     *      if ( !is_array( $value->cookies ) )
-     *      {
-     *          throw new InvalidArgumentException( "An array of assorted cookies was expected." );
-     *      }
-     *  }
-     * </code>.
-     *
-     * @param \eZ\Publish\Core\FieldType\Value $value
-     *
-     * @throws \eZ\Publish\API\Repository\Exceptions\InvalidArgumentException if the value does not match the expected structure
+     * {@inheritdoc}
      */
     protected function checkValueStructure(FieldTypeValue $value)
     {
@@ -214,22 +120,16 @@ class Type extends FieldType
     }
 
     /**
-     * @param \eZ\Publish\SPI\FieldType\Value $value
-     *
-     * @return bool
+     * {@inheritdoc}
      */
     public function isEmptyValue(SPIValue $value): bool
     {
+        /** @var \EzSystems\EzPlatformMatrixFieldtype\FieldType\Value $value */
         return $value->getRows()->count() === 0;
     }
 
     /**
-     * @param \eZ\Publish\API\Repository\Values\ContentType\FieldDefinition $fieldDefinition
-     * @param \eZ\Publish\SPI\FieldType\Value $value
-     *
-     * @return \eZ\Publish\SPI\FieldType\ValidationError[]
-     *
-     * @throws \eZ\Publish\API\Repository\Exceptions\InvalidArgumentException
+     * {@inheritdoc}
      */
     public function validate(FieldDefinition $fieldDefinition, SPIValue $value)
     {
@@ -239,6 +139,7 @@ class Type extends FieldType
 
         $countNonEmptyRows = 0;
 
+        /** @var \EzSystems\EzPlatformMatrixFieldtype\FieldType\Value $value */
         foreach ($value->getRows() as $row) {
             if (!$row->isEmpty()) {
                 ++$countNonEmptyRows;
@@ -260,19 +161,11 @@ class Type extends FieldType
     }
 
     /**
-     * Converts the given $value into a plain hash format.
-     * Converts the given $value into a plain hash format, which can be used to
-     * transfer the value through plain text formats, e.g. XML, which do not
-     * support complex structures like objects. See the class level doc block
-     * for additional information. See the class description for more details on a hash format.
-     *
-     * @param \eZ\Publish\SPI\FieldType\Value $value
-     *
-     * @return mixed
+     * {@inheritdoc}
      */
     public function toHash(SPIValue $value)
     {
-        /** @var RowsCollection $rows */
+        /** @var \EzSystems\EzPlatformMatrixFieldtype\FieldType\Value $value */
         $rows = $value->getRows();
 
         $hash['entries'] = [];
