@@ -1,7 +1,7 @@
 {% block ezmatrix_field %}
 {% spaceless %}
     {% set columnsSettings = content.contentType.fieldDefinitionsByIdentifier[field.fieldDefIdentifier].fieldSettings['columns'] %}
-    {% set fieldData = field.value.data.entries %}
+    {% set fieldData = field.value.rows %}
 
     <table>
         <thead>
@@ -15,7 +15,7 @@
         {% for data in fieldData %}
         <tr>
             {% for column in columnsSettings %}
-                <td>{{ data[column['identifier']]|default }}</td>
+                <td>{{ data.cells[column['identifier']]|default }}</td>
             {% endfor %}
         </tr>
         {% endfor %}
