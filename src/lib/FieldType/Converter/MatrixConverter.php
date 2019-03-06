@@ -54,13 +54,18 @@ class MatrixConverter implements Converter
     {
         $fieldSettings = $fieldDef->fieldTypeConstraints->fieldSettings;
 
-        if (isset($fieldSettings['minimum_rows'])) {
-            $storageDef->dataInt1 = (int)$fieldSettings['minimum_rows'];
-        }
+        $columns = array_values($fieldSettings['columns']);
+        $minimumRows = (int)$fieldSettings['minimum_rows'];
 
-        if (!empty($fieldSettings['columns'])) {
-            $storageDef->dataText5 = json_encode($fieldSettings['columns']);
-        }
+        array_walk($columns, function ($column) {
+            return [
+                'identifier' => trim($column['identifier'] ?? ''),
+                'name' => trim($column['name'] ?? ''),
+            ];
+        });
+
+        $storageDef->dataInt1 = $minimumRows;
+        $storageDef->dataText5 = json_encode($columns);
     }
 
     /**
