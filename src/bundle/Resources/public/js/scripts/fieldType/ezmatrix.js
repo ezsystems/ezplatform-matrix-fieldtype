@@ -103,9 +103,10 @@
                 const emptyEntriesAdded = field.dataset.emptyEntriesAdded;
 
                 field.dataset.emptyEntriesAdded = true;
-                field.dataset.nextIndex = rowsCount;
 
                 if (!emptyEntriesAdded) {
+                    field.dataset.nextIndex = rowsCount;
+
                     for (let i = 0; i < minimumRows - rowsCount; i++) {
                         this.addItem({ target: field });
                     }
