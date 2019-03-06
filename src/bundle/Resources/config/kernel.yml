@@ -10,5 +10,3 @@ system:
         admin_ui_forms:
             content_edit_form_templates:
                 - { template: '@ezdesign/matrix_fieldtype/content_edit_form_fields.html.twig', priority: 1 }
-        field_templates:
-            - { template: '@ezdesign/matrix_fieldtype/content_fields.html.twig', priority: 1 }
