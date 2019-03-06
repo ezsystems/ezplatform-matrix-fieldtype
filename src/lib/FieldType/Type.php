@@ -103,7 +103,9 @@ class Type extends FieldType
      */
     public function fromHash($hash): SPIValue
     {
-        foreach ($hash as $row) {
+        $entries = $hash['entries'] ?? [];
+
+        foreach ($entries as $row) {
             $rows[] = new Row($row);
         }
 
