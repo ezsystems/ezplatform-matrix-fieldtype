@@ -55,7 +55,41 @@ class Type extends FieldType
      */
     public function validateFieldSettings($fieldSettings): array
     {
-        return [];
+        $minimumRows = $fieldSettings['minimum_rows'];
+        $columns = array_values($fieldSettings['columns'] ?? []);
+
+        if (!is_numeric($minimumRows) || $minimumRows < 0) {
+            $errors[] = new ValidationError(
+                'Value must be numeric positive numeric.',
+                null,
+                [],
+                'minimum_rows'
+            );
+        }
+
+        foreach ($columns as $index => $column) {
+            $trimmedIdentifier = trim($column['identifier'] ?? '');
+
+            if (empty($trimmedIdentifier)) {
+                $errors[] = new ValidationError(
+                    'Column (index: %index%) must have identifier.',
+                    null,
+                    ['%index%' => $index]
+                );
+            } else {
+                if (in_array($trimmedIdentifier, $identifiers ?? [])) {
+                    $errors[] = new ValidationError(
+                        'Identifier "%identifier%" must be unique.',
+                        null,
+                        ['%identifier%' => $trimmedIdentifier]
+                    );
+                } else {
+                    $identifiers[] = $trimmedIdentifier;
+                }
+            }
+        }
+
+        return $errors ?? [];
     }
 
     /**
