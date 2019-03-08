@@ -125,9 +125,7 @@ class Type extends FieldType
      */
     public function getEmptyValue(): SPIValue
     {
-        $value = new Value([
-            new Row([]),
-        ]);
+        $value = new Value([]);
 
         return $value;
     }
