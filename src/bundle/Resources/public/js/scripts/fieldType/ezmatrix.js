@@ -36,7 +36,9 @@
         }
 
         getNextIndex(parentNode) {
-            return parentNode.dataset.nextIndex++;
+            const node = parentNode.querySelector(SELECTOR_MATRIX_ENTRIES_CONTAINER);
+
+            return node.dataset.nextIndex++;
         }
 
         /**
@@ -105,8 +107,6 @@
                 field.dataset.emptyEntriesAdded = true;
 
                 if (!emptyEntriesAdded) {
-                    field.dataset.nextIndex = rowsCount;
-
                     for (let i = 0; i < minimumRows - rowsCount; i++) {
                         this.addItem({ target: field });
                     }
