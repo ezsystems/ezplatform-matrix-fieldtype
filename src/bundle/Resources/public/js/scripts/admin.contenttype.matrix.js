@@ -30,7 +30,7 @@
             const template = settingsNode.querySelector(SELECTOR_TEMPLATE).innerHTML;
             const node = settingsNode.querySelector(SELECTOR_COLUMNS_CONTAINER);
 
-            node.insertAdjacentHTML('beforeend', template.replace(NUMBER_PLACEHOLDER, getNextIndex(settingsNode)));
+            node.insertAdjacentHTML('beforeend', template.replace(NUMBER_PLACEHOLDER, getNextIndex(node)));
 
             initColumns(settingsNode);
         };
@@ -48,8 +48,6 @@
         };
         const initColumns = (parentNode) => {
             updateDisabledState(parentNode);
-
-            parentNode.dataset.nextIndex = parentNode.dataset.nextIndex || container.querySelectorAll(SELECTOR_COLUMN).length;
 
             parentNode.querySelectorAll(SELECTOR_COLUMN_CHECKBOX).forEach((btn) => {
                 btn.removeEventListener('click', checkColumn, false);

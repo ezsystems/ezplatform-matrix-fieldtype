@@ -28,7 +28,7 @@
             {% endfor %}
         </tr>
         </thead>
-        <tbody class="ez-table__body" data-minimum-rows="{{ minimum_rows }}">
+        <tbody class="ez-table__body" data-minimum-rows="{{ minimum_rows }}" data-next-index="{{ form.entries.children|length ? max(form.entries.children|keys) + 1 : 0 }}">
             {{ form_widget(form) }}
         </tbody>
     </table>

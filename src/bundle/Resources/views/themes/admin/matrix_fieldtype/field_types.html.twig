@@ -48,7 +48,7 @@
                     <th>{{ 'field.column.identifier'|trans|desc('Identifier') }}</th>
                 </tr>
             </thead>
-            <tbody class="ez-table__body">
+            <tbody class="ez-table__body" data-next-index="{{ form.columns.children|length ? max(form.columns.children|keys) + 1 : 0 }}">
                 {% for column in form.columns %}
                     <tr class="ez-matrix-settings__column">
                         <td>
