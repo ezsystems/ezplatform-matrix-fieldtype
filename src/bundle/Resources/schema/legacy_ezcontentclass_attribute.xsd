@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  ~ @copyright Copyright (C) eZ Systems AS. All rights reserved.
+  ~ @license For full copyright and license information view LICENSE file distributed with this source code.
+  -->
+
+<!-- Legacy ezmatrix format:
+
+<?xml version="1.0" encoding="utf-8"?>
+<ezmatrix>
+    <column-name id="name" idx="0">Name</column-name>
+    <column-name id="time" idx="1">Time</column-name>
+</ezmatrix>
+
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="ezmatrix">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="column-name" maxOccurs="unbounded" minOccurs="0">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:string">
+                                <xs:attribute name="id" type="xs:string" use="required"/>
+                                <xs:attribute name="idx" type="xs:integer" use="required"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

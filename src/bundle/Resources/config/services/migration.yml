@@ -1,0 +1,11 @@
+services:
+    _defaults:
+        autoconfigure: true
+        autowire: true
+        public: false
+
+    EzSystems\EzPlatformMatrixFieldtypeBundle\Command\MigrateLegacyMatrixCommand:
+        arguments:
+            $contentclassAttributeSchema: '@=service("kernel").locateResource("@EzPlatformMatrixFieldtypeBundle/Resources/schema/legacy_ezcontentclass_attribute.xsd")'
+            $contentobjectAttributeSchema: '@=service("kernel").locateResource("@EzPlatformMatrixFieldtypeBundle/Resources/schema/legacy_ezcontentobject_attribute.xsd")'
+
