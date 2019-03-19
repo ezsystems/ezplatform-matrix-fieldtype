@@ -17,8 +17,6 @@ services:
         tags:
             - { name: ezpublish.fieldType, alias: '%ezplatform.fieldtype.matrix.identifier%' }
 
-    EzSystems\EzPlatformMatrixFieldtype\FieldType\Converter\StorageValue\StorageValueConverterFactory: ~
-
     EzSystems\EzPlatformMatrixFieldtype\FieldType\Converter\MatrixConverter:
         tags:
             - { name: ezpublish.storageEngine.legacy.converter, alias: '%ezplatform.fieldtype.matrix.identifier%' }
