@@ -1,2 +1,3 @@
 imports:
     - { resource: services/fieldtype.yml }
+    - { resource: services/migration.yml }
