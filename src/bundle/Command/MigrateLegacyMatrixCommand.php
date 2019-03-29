@@ -107,8 +107,6 @@ class MigrateLegacyMatrixCommand extends Command
                 $columnsJson = $storageFieldDefinition->dataText5;
             } else {
                 $columnsJson = $contentClassAttribute['columns'];
-
-                dump($columnsJson); die();
             }
 
             $contentAttributesCount = $this->getContentObjectAttributesCount(
