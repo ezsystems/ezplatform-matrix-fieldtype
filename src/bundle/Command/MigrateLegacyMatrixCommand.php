@@ -142,6 +142,11 @@ class MigrateLegacyMatrixCommand extends Command
                 (int)$contentClassAttribute['id']
             );
 
+            if ($contentAttributesCount === 0) {
+                $io->comment(sprintf('Zero instances of %s:%s attribute to migrate.', $contentClassAttribute['contenttype_identifier'], $contentClassAttribute['identifier']));
+                continue;
+            }
+
             $columns = json_decode($columnsJson);
 
             $progressBar = $this->getProgressBar($contentAttributesCount, $output);
