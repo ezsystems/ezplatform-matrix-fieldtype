@@ -115,7 +115,7 @@ class Type extends FieldType
     /**
      * {@inheritdoc}
      */
-    public function getName(SPIValue $value): string
+    public function getName(SPIValue $value, FieldDefinition $fieldDefinition, string $languageCode): string
     {
         return '';
     }
