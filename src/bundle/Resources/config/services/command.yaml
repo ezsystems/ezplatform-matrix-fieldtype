@@ -1,0 +1,9 @@
+services:
+    _defaults:
+        autoconfigure: true
+        autowire: true
+        public: false
+
+    EzSystems\EzPlatformMatrixFieldtypeBundle\Command\MigrateLegacyMatrixCommand:
+        tags:
+            - console.command
