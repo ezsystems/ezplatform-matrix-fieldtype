@@ -31,8 +31,8 @@ class EzPlatformMatrixFieldtypeExtension extends Extension implements PrependExt
             new FileLocator(__DIR__ . '/../Resources/config')
         );
 
-        $loader->load('default_parameters.yml');
-        $loader->load('services.yml');
+        $loader->load('default_parameters.yaml');
+        $loader->load('services.yaml');
     }
 
     /**
@@ -51,7 +51,7 @@ class EzPlatformMatrixFieldtypeExtension extends Extension implements PrependExt
      */
     public function prependKernelSettings(ContainerBuilder $container)
     {
-        $configFile = __DIR__ . '/../Resources/config/kernel.yml';
+        $configFile = __DIR__ . '/../Resources/config/kernel.yaml';
         $config = Yaml::parse(file_get_contents($configFile));
         $container->prependExtensionConfig('ezpublish', $config);
         $container->addResource(new FileResource($configFile));
