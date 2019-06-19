@@ -15,13 +15,13 @@ services:
         arguments:
             $fieldTypeIdentifier: '%ezplatform.fieldtype.matrix.identifier%'
         tags:
-            - { name: ezpublish.fieldType, alias: '%ezplatform.fieldtype.matrix.identifier%' }
+            - { name: ezplatform.field_type, alias: '%ezplatform.fieldtype.matrix.identifier%' }
 
     EzSystems\EzPlatformMatrixFieldtype\FieldType\Converter\MatrixConverter:
         tags:
-            - { name: ezpublish.storageEngine.legacy.converter, alias: '%ezplatform.fieldtype.matrix.identifier%' }
+            - { name: ezplatform.field_type.legacy_storage.converter, alias: '%ezplatform.fieldtype.matrix.identifier%' }
 
     EzSystems\EzPlatformMatrixFieldtype\FieldType\Mapper\MatrixFormMapper:
         tags:
-            - { name: ez.fieldFormMapper.definition, fieldType: '%ezplatform.fieldtype.matrix.identifier%' }
-            - { name: ez.fieldFormMapper.value, fieldType: '%ezplatform.fieldtype.matrix.identifier%' }
+            - { name: ezplatform.field_type.form_mapper.definition, fieldType: '%ezplatform.fieldtype.matrix.identifier%' }
+            - { name: ezplatform.field_type.form_mapper.value, fieldType: '%ezplatform.fieldtype.matrix.identifier%' }
