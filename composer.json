@@ -19,7 +19,7 @@
     "prefer-stable": true,
     "require": {
         "php": "^7.3",
-        "ezsystems/ezpublish-kernel": "^8.0@dev",
+        "ezsystems/ezpublish-kernel": "^8.0@beta",
         "symfony/http-kernel": "^4.3",
         "symfony/console": "^4.3",
         "symfony/config": "^4.3",
