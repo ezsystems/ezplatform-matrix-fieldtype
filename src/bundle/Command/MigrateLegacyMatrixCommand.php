@@ -70,17 +70,15 @@ class MigrateLegacyMatrixCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
-        if (!$input->isInteractive()) {
-            throw new RuntimeException('Command cannot be run in non-interactive mode.');
-        }
+        if ($input->isInteractive()) {
+            $io->caution('Read carefully. This operation is irreversible. Make sure you are using correct database and have backup.');
+            $answer = $io->ask('Are you sure you want to start migration? (type "' . self::CONFIRMATION_ANSWER . '" to confirm)');
 
-        $io->caution('Read carefully. This operation is irreversible. Make sure you are using correct database and have backup.');
-        $answer = $io->ask('Are you sure you want to start migration? (type "' . self::CONFIRMATION_ANSWER . '" to confirm)');
+            if ($answer !== self::CONFIRMATION_ANSWER) {
+                $io->comment('Canceled.');
 
-        if ($answer !== self::CONFIRMATION_ANSWER) {
-            $io->comment('Canceled.');
-
-            exit();
+                exit();
+            }
         }
 
         $io->comment('Migrating legacy ezmatrix fieldtype');
