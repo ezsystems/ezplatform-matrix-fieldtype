@@ -15,7 +15,6 @@ use eZ\Publish\Core\Persistence\Legacy\Content\StorageFieldValue;
 use eZ\Publish\SPI\Persistence\Content\FieldValue;
 use eZ\Publish\SPI\Persistence\Content\Type\FieldDefinition;
 use EzSystems\EzPlatformMatrixFieldtype\FieldType\Converter\MatrixConverter;
-use RuntimeException;
 use SimpleXMLElement;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\ProgressBar;
@@ -60,6 +59,11 @@ class MigrateLegacyMatrixCommand extends Command
                 InputOption::VALUE_OPTIONAL,
                 'Number of matrix FieldType values fetched into memory and processed at once',
                 self::DEFAULT_ITERATION_COUNT
+            )->addOption(
+                'force',
+                'f',
+                InputOption::VALUE_NONE,
+                'Prevents confirmation dialog. Please use it carefully.'
             );
     }
 
@@ -70,7 +74,7 @@ class MigrateLegacyMatrixCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
-        if ($input->isInteractive()) {
+        if ($input->getOption('force') !== true) {
             $io->caution('Read carefully. This operation is irreversible. Make sure you are using correct database and have backup.');
             $answer = $io->ask('Are you sure you want to start migration? (type "' . self::CONFIRMATION_ANSWER . '" to confirm)');
 
@@ -97,8 +101,7 @@ class MigrateLegacyMatrixCommand extends Command
                 $xml = new SimpleXMLElement((string)$contentClassAttribute['columns']);
 
                 $isValidXml = true;
-            }
-            catch (Exception $e) {
+            } catch (Exception $e) {
                 $isValidXml = false;
             }
 
@@ -129,7 +132,6 @@ class MigrateLegacyMatrixCommand extends Command
                     (int)$storageFieldDefinition->dataInt1,
                     (string)$storageFieldDefinition->dataText5
                 );
-
 
                 $columnsJson = $storageFieldDefinition->dataText5;
             } else {
@@ -164,8 +166,7 @@ class MigrateLegacyMatrixCommand extends Command
                         $xml = new SimpleXMLElement(
                             (string)$contentObjectAttribute['data_text']
                         );
-                    }
-                    catch (Exception $e) {
+                    } catch (Exception $e) {
                         $progressBar->advance();
 
                         continue;
@@ -175,7 +176,7 @@ class MigrateLegacyMatrixCommand extends Command
                     $fieldValue = new FieldValue([
                         'data' => [
                             'entries' => [],
-                        ]
+                        ],
                     ]);
 
                     $rows = $this->convertCellsToRows($xml->xpath('c'), $columns);
@@ -213,7 +214,7 @@ class MigrateLegacyMatrixCommand extends Command
     {
         $row = [];
         $rows = [];
-        $columnsCount = count($columns);
+        $columnsCount = \count($columns);
 
         foreach ($cells as $index => $cell) {
             $columnIndex = $index % $columnsCount;
