@@ -1,0 +1,26 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    EzSystems\EzPlatformMatrixFieldtype\GraphQL\Schema\MatrixFieldDefinitionMapper:
+        decorates: EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper
+        arguments:
+            $innerMapper: '@EzSystems\EzPlatformMatrixFieldtype\GraphQL\Schema\MatrixFieldDefinitionMapper.inner'
+        tags:
+            - { name: ezplatform_graphql.field_definition_input_mapper, fieldtype: ezmatrix }
+
+    EzSystems\EzPlatformMatrixFieldtype\GraphQL\Schema\NameHelper: ~
+
+    EzSystems\EzPlatformMatrixFieldtype\GraphQL\Schema\MatrixFieldDefinitionSchemaWorker:
+        tags:
+            - { name: ezplatform_graphql.domain_schema_worker }
+
+    EzSystems\EzPlatformMatrixFieldtype\GraphQL\Schema\MatrixFieldDefinitionInputSchemaWorker:
+        tags:
+            - { name: ezplatform_graphql.domain_schema_worker }
+
+    EzSystems\EzPlatformMatrixFieldtype\GraphQL\InputHandler:
+        tags:
+            - { name: ezplatform_graphql.fieldtype_input_handler, fieldtype: ezmatrix }
