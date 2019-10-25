@@ -15,12 +15,15 @@
             "EzSystems\\EzPlatformMatrixFieldtype\\": "src/lib/"
         }
     },
+    "repositories": [
+        { "type": "vcs", "url": "https://github.com/webhdx/ezplatform-content-forms.git" }
+    ],
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
         "php": "^7.3",
         "ezsystems/ezpublish-kernel": "^8.0@dev",
-        "ezsystems/ezplatform-content-forms": "^1.0@dev",
+        "ezsystems/ezplatform-content-forms": "dev-content-forms as ^1.0@dev",
         "symfony/http-kernel": "^4.3",
         "symfony/console": "^4.3",
         "symfony/config": "^4.3",
