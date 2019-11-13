@@ -17,14 +17,10 @@ use EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Mapper\FieldDefinition\Fie
 
 class MatrixFieldDefinitionMapper extends DecoratingFieldDefinitionMapper implements FieldDefinitionMapper, FieldDefinitionInputMapper
 {
-    /**
-     * @var \EzSystems\EzPlatformMatrixFieldtype\GraphQL\Schema\NameHelper
-     */
+    /** @var \EzSystems\EzPlatformMatrixFieldtype\GraphQL\Schema\NameHelper */
     private $nameHelper;
 
-    /**
-     * @var \eZ\Publish\API\Repository\ContentTypeService
-     */
+    /** @var \eZ\Publish\API\Repository\ContentTypeService */
     private $contentTypeService;
 
     public function __construct(FieldDefinitionMapper $innerMapper, NameHelper $nameHelper, ContentTypeService $contentTypeService)

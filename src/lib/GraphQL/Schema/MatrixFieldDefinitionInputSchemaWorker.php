@@ -14,9 +14,7 @@ use EzSystems\EzPlatformGraphQL\Schema\Worker;
 
 class MatrixFieldDefinitionInputSchemaWorker implements Worker
 {
-    /**
-     * @var \EzSystems\EzPlatformMatrixFieldtype\GraphQL\Schema\NameHelper
-     */
+    /** @var \EzSystems\EzPlatformMatrixFieldtype\GraphQL\Schema\NameHelper */
     private $nameHelper;
 
     public function __construct(NameHelper $nameHelper)
