@@ -24,3 +24,7 @@ services:
     EzSystems\EzPlatformMatrixFieldtype\GraphQL\InputHandler:
         tags:
             - { name: ezplatform_graphql.fieldtype_input_handler, fieldtype: ezmatrix }
+
+    EzSystems\EzPlatformMatrixFieldtype\GraphQL\FieldValueResolver:
+        tags:
+            - {name: overblog_graphql.resolver, alias: "MatrixFieldValue", method: "resolveMatrixFieldValue"}

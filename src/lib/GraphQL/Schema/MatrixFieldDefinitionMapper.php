@@ -67,8 +67,11 @@ class MatrixFieldDefinitionMapper extends DecoratingFieldDefinitionMapper implem
             return parent::mapToFieldValueResolver($fieldDefinition);
         }
 
+        // At this point 'value' is the Content item.
+        // We can't "pass the definition" to the resolver. We need the columns names. Pass them to the resolver ??
+        // An alternative is to
         return sprintf(
-            '@=resolver("DomainFieldValue", [value, "%s"]).value.getRows()',
+            '@=resolver("MatrixFieldValue", [value, "%s"])',
             $fieldDefinition->identifier
         );
     }
