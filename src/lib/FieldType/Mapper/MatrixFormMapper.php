@@ -10,10 +10,10 @@ namespace EzSystems\EzPlatformMatrixFieldtype\FieldType\Mapper;
 
 use EzSystems\EzPlatformMatrixFieldtype\Form\Type\ColumnType;
 use EzSystems\EzPlatformMatrixFieldtype\Form\Type\FieldType\MatrixFieldType;
-use EzSystems\RepositoryForms\Data\Content\FieldData;
-use EzSystems\RepositoryForms\Data\FieldDefinitionData;
-use EzSystems\RepositoryForms\FieldType\FieldDefinitionFormMapperInterface;
-use EzSystems\RepositoryForms\FieldType\FieldValueFormMapperInterface;
+use EzSystems\EzPlatformContentForms\Data\Content\FieldData;
+use EzSystems\EzPlatformAdminUi\Form\Data\FieldDefinitionData;
+use EzSystems\EzPlatformAdminUi\FieldType\FieldDefinitionFormMapperInterface;
+use EzSystems\EzPlatformContentForms\FieldType\FieldValueFormMapperInterface;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormInterface;
