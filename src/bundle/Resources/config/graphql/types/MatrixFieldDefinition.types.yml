@@ -1,0 +1,26 @@
+MatrixFieldDefinition:
+    type: object
+    config:
+        fields:
+            settings:
+                type: MatrixFieldDefinitionSettings
+                resolve: "@=value.getFieldSettings()"
+
+MatrixFieldDefinitionSettings:
+    type: object
+    config:
+        fields:
+            columns:
+                type: "[MatrixFieldDefinitionColumn]"
+            minimumRows:
+                type: "Int"
+                resolve: "@=value['minimum_rows']"
+
+MatrixFieldDefinitionColumn:
+    type: object
+    config:
+        fields:
+            name:
+                type: String
+            identifier:
+                type: String

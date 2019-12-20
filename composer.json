@@ -16,7 +16,8 @@
         }
     },
     "require": {
-        "php": "^7.1"
+        "php": "^7.1",
+        "ezsystems/ezplatform-graphql": "^1.0.4@dev"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "~2.7.1",
