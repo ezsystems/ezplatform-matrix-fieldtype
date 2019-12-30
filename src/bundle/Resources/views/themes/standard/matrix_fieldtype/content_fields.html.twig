@@ -1,6 +1,6 @@
 {% block ezmatrix_field %}
 {% apply spaceless %}
-    {% set columnsSettings = content.contentType.fieldDefinitionsByIdentifier[field.fieldDefIdentifier].fieldSettings['columns'] %}
+    {% set columnsSettings = fieldSettings['columns'] %}
     {% set fieldData = field.value.rows %}
 
     <table>
