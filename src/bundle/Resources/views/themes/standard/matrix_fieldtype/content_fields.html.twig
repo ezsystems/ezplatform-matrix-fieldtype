@@ -3,7 +3,7 @@
     {% set columnsSettings = content.contentType.fieldDefinitionsByIdentifier[field.fieldDefIdentifier].fieldSettings['columns'] %}
     {% set fieldData = field.value.rows %}
 
-    <table>
+    <table {% if attr.class is defined %} class="{{attr.class}}"{% endif %}>
         <thead>
             <tr>
                 {% for column in columnsSettings %}
