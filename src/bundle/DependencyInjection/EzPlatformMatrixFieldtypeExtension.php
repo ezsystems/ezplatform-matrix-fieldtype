@@ -65,7 +65,7 @@ class EzPlatformMatrixFieldtypeExtension extends Extension implements PrependExt
     {
         $container->prependExtensionConfig('jms_translation', [
             'configs' => [
-                'matrix_fieldtype' => [
+                'ezplatform_matrix_fieldtype' => [
                     'dirs' => [
                         __DIR__ . '/../../',
                     ],
