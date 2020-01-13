@@ -1,0 +1,63 @@
+dist: trusty
+language: php
+php:
+  - 7.3
+
+env:
+  global:
+    - EZPLATFORM_REPO="https://github.com/ezsystems/ezplatform.git"
+    - APP_ENV=behat
+    - APP_DEBUG=1
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+# test only master and stable branches (+ Pull requests)
+branches:
+  only:
+    - master
+    - /^\d+\.\d+$/
+
+matrix:
+  include:
+    - name: "Code Style Check"
+      env: CHECK_CS=1
+
+notifications:
+  slack:
+    rooms:
+      - secure: KQTZ6cIbfe+wT8mXraJOFlRZEbGWgDFRfpaRwRmm6rI/4zbI8emV6/vsuvmgPq5O4L1GwnM6Bb9cyKj8hPd6QfaBr0WHZhYDIlTZLVnM94xyCBbts8AOoj+MA/7cozJwqeri8kmiYZhz8/9UCHT5Szu6LZhykb1BE/7+CC//YH9bix1/MAei3fQUDEaWjmCIcDr2tWcMeRncVBxGaQJQb4yduxQlAUsYJtdrwxKuUIoF9nGITP25XdlC3cwoSbqzJgVc/71bgMZ/7EZHAp4HN3In+sAQOLeFL+anbVpb8fUZLwfWDnj99B+gyJNG18Y0EncVhfoGnBjB6PA2+aWBW2lisTQ2VNZXc0j3HPxtQhBgtigdaHNO0Rwyz/Vl1Gw8K/yBPkNuMulp/V1aqyZq53idNuMByBSqmJs5sdivSNopgmNFuPtB+Gmg+XXnIbm4nOMDE5GneKFVOTABc/oLmektnp17iKOGQK9Hd8u4x8BgsvD+4RHFInPy6Ox0snQF+nGpZ0mF5gN6vER91TcDSbJ9/hbnK7JMw3c1rlSqjYMCarBnBzyr8BCUibVu1Kq88GjM/+fseJn4gEF5rRA4tigw4AfR2U3RlOyzK09yL+CNO8+9QNsHFH+fN+CAP9A2HZDjMHDfc1/5rS1DJ/8w8lp9fWyuVhp+V/WlTNGv1QM=
+    on_success: change
+    on_failure: always
+    on_pull_requests: false
+
+before_install:
+  # Disable XDebug for performance
+  - phpenv config-rm xdebug.ini
+  # Get latest composer build
+  - travis_retry composer selfupdate
+  # Avoid memory issues on composer install
+  - echo "memory_limit=-1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+
+install:
+  # Install packages if needed
+  - if [ "${CHECK_CS}" == "1" -o "${PHPUNIT_CONFIG}" != "" ]; then travis_retry composer install --prefer-dist --no-interaction --no-suggest ; fi
+  # Prepare whole environment if needed
+  - if [ "${BEHAT_OPTS}" != "" ]; then ./.travis/prepare_ezplatform.sh ${INSTALL_EZ_INSTALL_TYPE}; fi
+
+script:
+  - if [ "${CHECK_CS}" == "1" ] ; then ./vendor/bin/php-cs-fixer fix -v --dry-run --show-progress=estimating ; fi
+  - if [ "${PHPUNIT_CONFIG}" != '' ]; then ./vendor/bin/phpunit -c "${PHPUNIT_CONFIG}"; fi
+  - if [ "${BEHAT_OPTS}" != "" ]; then cd "$HOME/build/ezplatform"; docker-compose exec --user www-data app sh -c "bin/ezbehat ${BEHAT_OPTS}" ; fi
+
+after_failure:
+  # Will show us the last bit of the log of container's main processes
+  # (not counting shell process above running php and behat)
+  # NOTE: errors during docker setup of travis build won't show up here (can't output all as it is too much in debug/verbose mode)
+  - docker-compose logs -t --tail=15
+  # Will show us what is up, and how long it's been up
+  - docker ps -s
+
+after_script:
+  - if [ "${BEHAT_OPTS}" != "" ] ; then bin/ezreport ; fi
