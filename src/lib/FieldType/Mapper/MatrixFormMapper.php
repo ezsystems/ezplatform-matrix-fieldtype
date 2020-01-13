@@ -8,12 +8,12 @@ declare(strict_types=1);
 
 namespace EzSystems\EzPlatformMatrixFieldtype\FieldType\Mapper;
 
+use EzSystems\EzPlatformAdminUi\FieldType\FieldDefinitionFormMapperInterface;
+use EzSystems\EzPlatformAdminUi\Form\Data\FieldDefinitionData;
+use EzSystems\EzPlatformContentForms\Data\Content\FieldData;
+use EzSystems\EzPlatformContentForms\FieldType\FieldValueFormMapperInterface;
 use EzSystems\EzPlatformMatrixFieldtype\Form\Type\ColumnType;
 use EzSystems\EzPlatformMatrixFieldtype\Form\Type\FieldType\MatrixFieldType;
-use EzSystems\EzPlatformContentForms\Data\Content\FieldData;
-use EzSystems\EzPlatformAdminUi\Form\Data\FieldDefinitionData;
-use EzSystems\EzPlatformAdminUi\FieldType\FieldDefinitionFormMapperInterface;
-use EzSystems\EzPlatformContentForms\FieldType\FieldValueFormMapperInterface;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormInterface;

@@ -2,3 +2,4 @@ imports:
     - { resource: services/fieldtype.yaml }
     - { resource: services/migration.yaml }
     - { resource: services/command.yaml }
+    - { resource: services/graphql.yaml }

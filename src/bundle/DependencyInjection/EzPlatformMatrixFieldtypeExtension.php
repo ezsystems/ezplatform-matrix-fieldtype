@@ -44,6 +44,7 @@ class EzPlatformMatrixFieldtypeExtension extends Extension implements PrependExt
     {
         $this->prependKernelSettings($container);
         $this->prependJMSTranslation($container);
+        $this->prependGraphQL($container);
     }
 
     /**
@@ -74,6 +75,22 @@ class EzPlatformMatrixFieldtypeExtension extends Extension implements PrependExt
                     'extractors' => [],
                 ],
             ],
+        ]);
+    }
+
+    private function prependGraphQL(ContainerBuilder $container)
+    {
+        $container->prependExtensionConfig('overblog_graphql', [
+            'definitions' => [
+                'mappings' => [
+                    'types' => [
+                        [
+                            'type' => 'yaml',
+                            'dir' => __DIR__ . '/../Resources/config/graphql/types',
+                        ]
+                    ]
+                ]
+            ]
         ]);
     }
 }
