@@ -87,10 +87,10 @@ class EzPlatformMatrixFieldtypeExtension extends Extension implements PrependExt
                         [
                             'type' => 'yaml',
                             'dir' => __DIR__ . '/../Resources/config/graphql/types',
-                        ]
-                    ]
-                ]
-            ]
+                        ],
+                    ],
+                ],
+            ],
         ]);
     }
 }
