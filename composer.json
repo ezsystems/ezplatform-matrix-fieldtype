@@ -31,7 +31,9 @@
         "symfony/options-resolver": "^4.3"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.15"
+        "ezsystems/ezplatform-code-style": "^0.1.0",
+        "friendsofphp/php-cs-fixer": "^2.16.0",
+        "phpunit/phpunit": "^6.4"
     },
     "scripts": {
         "fix-cs": "@php ./vendor/bin/php-cs-fixer fix -v --show-progress=estimating"
