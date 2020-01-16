@@ -29,7 +29,7 @@
     "require-dev": {
         "ezsystems/ezplatform-code-style": "^0.1.0",
         "friendsofphp/php-cs-fixer": "^2.16.0",
-        "phpunit/phpunit": "^8.2"
+        "phpunit/phpunit": "^6.4"
     },
     "scripts": {
         "fix-cs": "@php ./vendor/bin/php-cs-fixer fix -v --show-progress=estimating"

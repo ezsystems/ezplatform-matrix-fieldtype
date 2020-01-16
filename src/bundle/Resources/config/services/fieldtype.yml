@@ -28,4 +28,4 @@ services:
 
     EzSystems\EzPlatformMatrixFieldtype\FieldType\Indexable:
         tags:
-            - { name: ezplatform.fieldType.indexable, alias: '%ezplatform.fieldtype.matrix.identifier%' }
+            - { name: ezpublish.fieldType.indexable, alias: '%ezplatform.fieldtype.matrix.identifier%' }

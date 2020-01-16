@@ -32,9 +32,8 @@ trait CoreSetupFactoryTrait
         // @todo refactor when refactoring kernel SetupFactory to avoid hardcoding package path
         $kernelRootDir = realpath(__DIR__ . '/../../vendor/ezsystems/ezpublish-kernel');
         if (false === $kernelRootDir) {
-            throw new RuntimeException('Unable to find the ezpublish-kernel package directory');
+            throw new RuntimeException('Unable to find ezpublish-kernel package directory');
         }
-
         $settingsPath = "{$kernelRootDir}/eZ/Publish/Core/settings";
         $loader = new YamlFileLoader($containerBuilder, new FileLocator($settingsPath));
         $loader->load('fieldtype_external_storages.yml');
@@ -44,8 +43,7 @@ trait CoreSetupFactoryTrait
         $loader->load('io.yml');
         $loader->load('repository.yml');
         $loader->load('repository/inner.yml');
-        $loader->load('repository/event.yml');
-        $loader->load('repository/autowire.yml');
+        $loader->load('repository/signalslot.yml');
         $loader->load('repository/siteaccessaware.yml');
         $loader->load('roles.yml');
         $loader->load('storage_engines/common.yml');
@@ -57,7 +55,6 @@ trait CoreSetupFactoryTrait
         $loader->load('utils.yml');
         $loader->load('tests/common.yml');
         $loader->load('policies.yml');
-        $loader->load('thumbnails.yml');
         $loader->load('search_engines/legacy.yml');
         $loader->load('tests/integration_legacy.yml');
         // Cache settings (takes same env variables as ezplatform does, only supports "singleredis" setup)
@@ -78,8 +75,8 @@ trait CoreSetupFactoryTrait
                 ->setArguments([new Reference('ezpublish.cache_pool.driver.redis'), '', 120]);
         }
         $containerBuilder->setParameter('ezpublish.kernel.root_dir', realpath($kernelRootDir));
-        $containerBuilder->addCompilerPass(new Compiler\FieldTypeRegistryPass());
-        $containerBuilder->addCompilerPass(new Compiler\Persistence\FieldTypeRegistryPass());
+        $containerBuilder->addCompilerPass(new Compiler\FieldTypeCollectionPass());
+        $containerBuilder->addCompilerPass(new Compiler\FieldTypeNameableCollectionPass());
         $containerBuilder->addCompilerPass(new Compiler\RegisterLimitationTypePass());
         $containerBuilder->addCompilerPass(new Compiler\Storage\ExternalStorageRegistryPass());
         $containerBuilder->addCompilerPass(new Compiler\Storage\Legacy\FieldValueConverterRegistryPass());
@@ -87,6 +84,7 @@ trait CoreSetupFactoryTrait
         $containerBuilder->addCompilerPass(new Compiler\Search\Legacy\CriteriaConverterPass());
         $containerBuilder->addCompilerPass(new Compiler\Search\Legacy\CriterionFieldValueHandlerRegistryPass());
         $containerBuilder->addCompilerPass(new Compiler\Search\Legacy\SortClauseConverterPass());
+        $containerBuilder->addCompilerPass(new Compiler\Search\SearchEngineSignalSlotPass('legacy'));
         $containerBuilder->addCompilerPass(new Compiler\Search\FieldRegistryPass());
         $containerBuilder->setParameter(
             'legacy_dsn',
