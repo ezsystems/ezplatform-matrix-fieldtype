@@ -15,6 +15,13 @@
             "EzSystems\\EzPlatformMatrixFieldtype\\": "src/lib/"
         }
     },
+    "autoload-dev": {
+      "psr-4": {
+        "EzSystems\\EzPlatformMatrixFieldtype\\Integration\\Tests\\": "tests/integration/"
+      }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
         "php": "^7.1",
         "ezsystems/ezplatform-graphql": "^1.0.4@dev"
@@ -22,7 +29,7 @@
     "require-dev": {
         "ezsystems/ezplatform-code-style": "^0.1.0",
         "friendsofphp/php-cs-fixer": "^2.16.0",
-        "phpunit/phpunit": "^6.4"
+        "phpunit/phpunit": "^8.2"
     },
     "scripts": {
         "fix-cs": "@php ./vendor/bin/php-cs-fixer fix -v --show-progress=estimating"
