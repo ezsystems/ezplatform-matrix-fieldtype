@@ -19,13 +19,6 @@ final class LegacySetupFactory extends CoreLegacySetupFactory
 {
     use CoreSetupFactoryTrait;
 
-    /**
-     * Returns the service container used for initialization of the repository.
-     *
-     * @return \eZ\Publish\Core\Base\ServiceContainer
-     *
-     * @throws \Exception
-     */
     public function getServiceContainer()
     {
         if (!isset(self::$serviceContainer)) {
@@ -44,11 +37,6 @@ final class LegacySetupFactory extends CoreLegacySetupFactory
         return self::$serviceContainer;
     }
 
-    /**
-     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $containerBuilder
-     *
-     * @throws \Exception
-     */
     protected function externalBuildContainer(ContainerBuilder $containerBuilder): void
     {
         $this->loadCoreSettings($containerBuilder);
