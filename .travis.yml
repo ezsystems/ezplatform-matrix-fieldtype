@@ -23,7 +23,9 @@ matrix:
   include:
     - name: "Code Style Check"
       env: CHECK_CS=1
-
+    - name: "PHP 7.3 Integration tests"
+      php: 7.3
+      env: PHPUNIT_CONFIG="phpunit-integration-legacy.xml"
 notifications:
   slack:
     rooms:
