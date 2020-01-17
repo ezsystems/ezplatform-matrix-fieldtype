@@ -20,8 +20,6 @@
         "EzSystems\\EzPlatformMatrixFieldtype\\Integration\\Tests\\": "tests/integration/"
       }
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "require": {
         "php": "^7.1",
         "ezsystems/ezplatform-graphql": "^1.0.4@dev"
