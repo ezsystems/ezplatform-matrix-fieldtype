@@ -17,6 +17,11 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
+    "autoload-dev": {
+      "psr-4": {
+        "EzSystems\\EzPlatformMatrixFieldtype\\Integration\\Tests\\": "tests/integration/"
+      }
+    },
     "require": {
         "php": "^7.3",
         "ezsystems/ezpublish-kernel": "^8.0@dev",

@@ -25,3 +25,7 @@ services:
         tags:
             - { name: ezplatform.field_type.form_mapper.definition, fieldType: '%ezplatform.fieldtype.matrix.identifier%' }
             - { name: ezplatform.field_type.form_mapper.value, fieldType: '%ezplatform.fieldtype.matrix.identifier%' }
+
+    EzSystems\EzPlatformMatrixFieldtype\FieldType\Indexable:
+        tags:
+            - { name: ezplatform.field_type.indexable, alias: '%ezplatform.fieldtype.matrix.identifier%' }

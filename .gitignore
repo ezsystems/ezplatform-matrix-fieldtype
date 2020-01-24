@@ -4,5 +4,6 @@ yarn.lock
 yarn-error.log
 /vendor
 /.php_cs.cache
+/.phpunit.result.cache
 package-lock.json
 .DS_Store

@@ -1,0 +1,19 @@
+<phpunit
+        backupGlobals="false"
+        backupStaticAttributes="false"
+        bootstrap="vendor/autoload.php"
+        convertErrorsToExceptions="true"
+        convertNoticesToExceptions="true"
+        convertWarningsToExceptions="true"
+        colors="true">
+    <php>
+        <env name="setupFactory" value="\EzSystems\EzPlatformMatrixFieldtype\Integration\Tests\LegacySetupFactory" />
+        <env name="fixtureDir" value="Legacy" />
+        <ini name="error_reporting" value="-1" />
+    </php>
+    <testsuites>
+        <testsuite name="ezplatform-matrix-fieldtype integration">
+            <directory>tests/integration/</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

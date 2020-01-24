@@ -210,4 +210,9 @@ class Type extends FieldType
 
         return $hash;
     }
+
+    public function isSearchable(): bool
+    {
+        return true;
+    }
 }
