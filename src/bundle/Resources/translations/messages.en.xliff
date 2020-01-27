@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="not.available">
+    <header>
+      <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
+      <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
+    </header>
+    <body>
+      <trans-unit id="bc68ce8e6e2d293ef01129f0238e11152df66ca6" resname="ezmatrix.add">
+        <source>Add</source>
+        <target state="new">Add</target>
+        <note>key: ezmatrix.add</note>
+      </trans-unit>
+      <trans-unit id="f5aef330799a7345c75e72279e06eb9f5b7d0da9" resname="ezmatrix.remove">
+        <source>Remove</source>
+        <target state="new">Remove</target>
+        <note>key: ezmatrix.remove</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
