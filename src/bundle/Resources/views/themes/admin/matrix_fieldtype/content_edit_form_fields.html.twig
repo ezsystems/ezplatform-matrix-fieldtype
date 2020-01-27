@@ -9,14 +9,14 @@
         <div>
             <button type="button" 
                     class="btn btn-primary ez-btn--add-matrix-entry" 
-                    title="{{ 'ezmatrix.add'|trans()|desc('Add') }}">
+                    title="{{ 'ezmatrix.add'|trans({}, 'matrix_fieldtype')|desc('Add') }}">
                 <svg class="ez-icon ez-icon-edit">
                     <use xlink:href="{{ asset('bundles/ezplatformadminui/img/ez-icons.svg') }}#create"></use>
                 </svg>
             </button>
             <button type="button" 
                     class="btn btn-danger ez-btn--remove-matrix-entry"
-                    title="{{ 'ezmatrix.remove'|trans()|desc('Remove') }}">
+                    title="{{ 'ezmatrix.remove'|trans({}, 'matrix_fieldtype')|desc('Remove') }}">
                 <svg class="ez-icon ez-icon-edit">
                     <use xlink:href="{{ asset('bundles/ezplatformadminui/img/ez-icons.svg') }}#trash"></use>
                 </svg>
