@@ -4,4 +4,6 @@ services:
         autowire: true
         public: false
 
-    EzSystems\EzPlatformMatrixFieldtypeBundle\Command\MigrateLegacyMatrixCommand: ~
+    EzSystems\EzPlatformMatrixFieldtypeBundle\Command\MigrateLegacyMatrixCommand:
+        arguments:
+            - "@ezpublish.persistence.connection"
