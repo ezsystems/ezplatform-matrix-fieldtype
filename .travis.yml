@@ -6,8 +6,8 @@ php:
 env:
   global:
     - EZPLATFORM_REPO="https://github.com/ezsystems/ezplatform.git"
-    - APP_ENV=behat
-    - APP_DEBUG=1
+    - SYMFONY_ENV=behat
+    - SYMFONY_DEBUG=1
 
 cache:
   directories:
@@ -26,6 +26,12 @@ matrix:
     - name: "PHP 7.3 Integration tests"
       php: 7.3
       env: PHPUNIT_CONFIG="phpunit-integration-legacy.xml"
+    - name: "Browser fieldtype tests"
+      php: 7.3
+      env: 
+        - BEHAT_OPTS="--mode=standard --profile=adminui --suite=adminuimodules"
+        - COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/selenium.yml"
+
 notifications:
   slack:
     rooms:
