@@ -1,3 +1,5 @@
+{% trans_default_domain 'matrix_fieldtype' %}
+
 {% block ezplatform_fieldtype_ezmatrix_widget %}
     <script type="text/template" class="ez-data-source__entry-template">
         {{ form_row(form.entries.vars.prototype) }}
@@ -7,12 +9,20 @@
             {{ form_label(form) }}
         </div>
         <div>
-            <button type="button" class="btn btn-primary ez-btn--add-matrix-entry">
+            <button 
+                type="button" 
+                class="btn btn-primary ez-btn--add-matrix-entry" 
+                title="{{ 'ezmatrix.add'|trans|desc('Add') }}"
+            >
                 <svg class="ez-icon ez-icon-edit">
                     <use xlink:href="{{ asset('bundles/ezplatformadminui/img/ez-icons.svg') }}#create"></use>
                 </svg>
             </button>
-            <button type="button" class="btn btn-danger ez-btn--remove-matrix-entry">
+            <button 
+                type="button" 
+                class="btn btn-danger ez-btn--remove-matrix-entry"
+                title="{{ 'ezmatrix.remove'|trans|desc('Remove') }}"
+            >
                 <svg class="ez-icon ez-icon-edit">
                     <use xlink:href="{{ asset('bundles/ezplatformadminui/img/ez-icons.svg') }}#trash"></use>
                 </svg>
