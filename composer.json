@@ -22,9 +22,6 @@
         "EzSystems\\EzPlatformMatrixFieldtype\\Integration\\Tests\\": "tests/integration/"
       }
     },
-    "repositories": [
-        {"type": "vcs", "url": "https://github.com/ezsystems/Routing.git"}
-    ],
     "require": {
         "php": "^7.3",
         "ezsystems/ezpublish-kernel": "dev-symfony5 as 8.0.x-dev",
