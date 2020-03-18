@@ -15,8 +15,6 @@
             "EzSystems\\EzPlatformMatrixFieldtype\\": "src/lib/"
         }
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "autoload-dev": {
       "psr-4": {
         "EzSystems\\EzPlatformMatrixFieldtype\\Integration\\Tests\\": "tests/integration/"
@@ -27,13 +25,13 @@
         "ezsystems/ezpublish-kernel": "^8.0@dev",
         "ezsystems/ezplatform-content-forms": "^1.0@dev",
         "ezsystems/ezplatform-graphql": "^2.0@dev",
-        "symfony/http-kernel": "^4.3",
-        "symfony/console": "^4.3",
-        "symfony/config": "^4.3",
-        "symfony/dependency-injection": "^4.3",
-        "symfony/yaml": "^4.3",
-        "symfony/form": "^4.3",
-        "symfony/options-resolver": "^4.3"
+        "symfony/http-kernel": "^5.0",
+        "symfony/console": "^5.0",
+        "symfony/config": "^5.0",
+        "symfony/dependency-injection": "^5.0",
+        "symfony/yaml": "^5.0",
+        "symfony/form": "^5.0",
+        "symfony/options-resolver": "^5.0"
     },
     "require-dev": {
         "ezsystems/ezplatform-code-style": "^0.1.0",
