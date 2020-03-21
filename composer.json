@@ -34,6 +34,14 @@
         "symfony/options-resolver": "^5.0"
     },
     "require-dev": {
+        "ezsystems/doctrine-dbal-schema": "^1.0@dev",
+        "ezsystems/ez-support-tools": "^2.0@dev",
+        "ezsystems/ezplatform-admin-ui": "^2.0@dev",
+        "ezsystems/ezplatform-admin-ui-modules": "^2.0@dev",
+        "ezsystems/ezplatform-user": "^2.0@dev",
+        "ezsystems/ezplatform-richtext": "^2.0@dev",
+        "ezsystems/ezplatform-rest": "^1.0@dev",
+        "ezsystems/ezplatform-design-engine": "^3.0@dev",
         "ezsystems/ezplatform-code-style": "^0.1.0",
         "friendsofphp/php-cs-fixer": "^2.16.0",
         "phpunit/phpunit": "^6.4"
