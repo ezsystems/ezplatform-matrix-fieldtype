@@ -81,7 +81,7 @@ class MigrateLegacyMatrixCommand extends Command
             if ($answer !== self::CONFIRMATION_ANSWER) {
                 $io->comment('Canceled.');
 
-                exit();
+                return 0;
             }
         }
 
@@ -202,6 +202,8 @@ class MigrateLegacyMatrixCommand extends Command
         }
 
         $io->success('Done.');
+
+        return 0;
     }
 
     /**
