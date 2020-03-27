@@ -81,7 +81,7 @@ class MigrateLegacyMatrixCommand extends Command
             if ($answer !== self::CONFIRMATION_ANSWER) {
                 $io->comment('Canceled.');
 
-                return 0;
+                return 1;
             }
         }
 
