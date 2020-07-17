@@ -24,7 +24,7 @@
         "php": "^7.3",
         "ezsystems/ezplatform-kernel": "~1.0.0@dev || ~1.1.0@dev",
         "ezsystems/ezplatform-content-forms": "~1.0.0@dev || ~1.1.0@dev",
-        "ezsystems/ezplatform-graphql": "~2.0.0@dev || ~1.1.0@dev",
+        "ezsystems/ezplatform-graphql": "~2.0.0@dev || ~2.1.0@dev",
         "symfony/http-kernel": "^5.0",
         "symfony/console": "^5.0",
         "symfony/config": "^5.0",
