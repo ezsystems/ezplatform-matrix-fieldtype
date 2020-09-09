@@ -11,7 +11,7 @@
         <div>
             <button 
                 type="button" 
-                class="btn btn-primary ez-btn--add-matrix-entry" 
+                class="btn btn-icon ez-btn--add-matrix-entry"
                 title="{{ 'ezmatrix.add'|trans|desc('Add') }}"
             >
                 <svg class="ez-icon ez-icon-edit">
@@ -20,10 +20,10 @@
             </button>
             <button 
                 type="button" 
-                class="btn btn-danger ez-btn--remove-matrix-entry"
+                class="btn btn-icon ez-btn--remove-matrix-entry"
                 title="{{ 'ezmatrix.remove'|trans|desc('Remove') }}"
             >
-                <svg class="ez-icon ez-icon-edit">
+                <svg class="ez-icon ez-icon-edit ez-icon">
                     <use xlink:href="{{ asset('bundles/ezplatformadminui/img/ez-icons.svg') }}#trash"></use>
                 </svg>
             </button>
@@ -47,7 +47,7 @@
 {% block ezplatform_fieldtype_ezmatrix_entry_row %}
     <tr class="ez-table__matrix-entry">
         <td>
-            <input type="checkbox" class="ez-table__ezmatrix-entry-checkbox">
+            <input type="checkbox" class="ez-input ez-input--checkbox ez-ez-table__ezmatrix-entry-checkbox">
         </td>
         {% for input in form.children %}
             <td>
