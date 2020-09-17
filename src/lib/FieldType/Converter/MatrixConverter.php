@@ -42,7 +42,7 @@ class MatrixConverter implements Converter
     public function toFieldValue(StorageFieldValue $value, FieldValue $fieldValue): void
     {
         $fieldValue->data = [
-            'entries' => json_decode($value->dataText, true),
+            'entries' => $value->dataText === null ? [] : json_decode($value->dataText, true),
         ];
     }
 
