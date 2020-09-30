@@ -22,7 +22,7 @@
     },
     "require": {
         "php": "^7.1",
-        "ezsystems/ezplatform-graphql": "^1.0.4@dev"
+        "ezsystems/ezplatform-graphql": "^1.0.4"
     },
     "require-dev": {
         "ezsystems/ezplatform-code-style": "^0.1.0",
