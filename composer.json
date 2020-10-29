@@ -22,7 +22,7 @@
     },
     "require": {
         "php": "^7.3",
-        "ezsystems/ezplatform-kernel": "^1.0@dev",
+        "ezsystems/ezplatform-kernel": "~1.2.0@dev",
         "ezsystems/ezplatform-content-forms": "^1.0@dev",
         "ezsystems/ezplatform-graphql": "^2.0@dev",
         "symfony/http-kernel": "^5.0",
@@ -49,7 +49,7 @@
         "fix-cs": "@php ./vendor/bin/php-cs-fixer fix -v --show-progress=estimating"
     },
     "extra": {
-        "_ezplatform_branch_for_behat_tests": "master",
+        "_ezplatform_branch_for_behat_tests": "3.2",
         "branch-alias": {
             "dev-master": "2.1.x-dev",
             "dev-tmp_ci_branch": "2.1.x-dev"
