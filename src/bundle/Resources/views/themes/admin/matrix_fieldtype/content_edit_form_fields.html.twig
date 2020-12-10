@@ -29,19 +29,21 @@
             </button>
         </div>
     </div>
-    <table class="ez-table table">
-        <thead>
-        <tr>
-            <th></th>
-            {% for column in columns %}
-                <th data-identifier="{{ column['identifier'] }}">{{ column['name'] }}</th>
-            {% endfor %}
-        </tr>
-        </thead>
-        <tbody class="ez-table__body" data-minimum-rows="{{ minimum_rows }}" data-next-index="{{ form.entries.children|length ? max(form.entries.children|keys) + 1 : 0 }}">
-            {{ form_widget(form) }}
-        </tbody>
-    </table>
+    <div class="ez-scrollable-table-wrapper">
+        <table class="ez-table table">
+            <thead>
+            <tr>
+                <th></th>
+                {% for column in columns %}
+                    <th data-identifier="{{ column['identifier'] }}">{{ column['name'] }}</th>
+                {% endfor %}
+            </tr>
+            </thead>
+            <tbody class="ez-table__body" data-minimum-rows="{{ minimum_rows }}" data-next-index="{{ form.entries.children|length ? max(form.entries.children|keys) + 1 : 0 }}">
+                {{ form_widget(form) }}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
 
 {% block ezplatform_fieldtype_ezmatrix_entry_row %}
