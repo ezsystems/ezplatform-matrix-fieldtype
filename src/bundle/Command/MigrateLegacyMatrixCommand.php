@@ -10,6 +10,7 @@ namespace EzSystems\EzPlatformMatrixFieldtypeBundle\Command;
 
 use Doctrine\DBAL\Connection;
 use Exception;
+use eZ\Bundle\EzPublishCoreBundle\Command\BackwardCompatibleCommand;
 use eZ\Publish\Core\Persistence\Legacy\Content\StorageFieldDefinition;
 use eZ\Publish\Core\Persistence\Legacy\Content\StorageFieldValue;
 use eZ\Publish\SPI\Persistence\Content\FieldValue;
@@ -23,7 +24,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-class MigrateLegacyMatrixCommand extends Command
+class MigrateLegacyMatrixCommand extends Command implements BackwardCompatibleCommand
 {
     private const DEFAULT_ITERATION_COUNT = 1000;
 
@@ -31,7 +32,7 @@ class MigrateLegacyMatrixCommand extends Command
 
     private const CONFIRMATION_ANSWER = 'yes';
 
-    protected static $defaultName = 'ezplatform:migrate:legacy_matrix';
+    protected static $defaultName = 'ibexa:migrate:legacy_matrix';
 
     /** @var \Doctrine\DBAL\Connection */
     private $connection;
@@ -53,6 +54,7 @@ class MigrateLegacyMatrixCommand extends Command
     protected function configure()
     {
         $this
+            ->setAliases(['ezplatform:migrate:legacy_matrix'])
             ->addOption(
                 'iteration-count',
                 'c',
@@ -344,5 +346,13 @@ class MigrateLegacyMatrixCommand extends Command
         );
 
         return $progressBar;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getDeprecatedAliases(): array
+    {
+        return ['ezplatform:migrate:legacy_matrix'];
     }
 }
