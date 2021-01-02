@@ -22,6 +22,8 @@
     },
     "require": {
         "php": "^7.1",
+        "ext-libxml": "*",
+        "ext-simplexml": "*",
         "ezsystems/ezplatform-graphql": "^1.0.4@dev"
     },
     "require-dev": {
