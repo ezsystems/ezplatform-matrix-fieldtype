@@ -6,6 +6,6 @@ services:
 
     EzSystems\EzPlatformMatrixFieldtypeBundle\Command\MigrateLegacyMatrixCommand:
         arguments:
-            - "@ezpublish.persistence.connection"
+            - '@ezpublish.persistence.connection'
         tags:
             - { name: console.command }

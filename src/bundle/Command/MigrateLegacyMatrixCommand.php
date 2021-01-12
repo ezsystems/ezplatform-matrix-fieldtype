@@ -32,8 +32,6 @@ class MigrateLegacyMatrixCommand extends Command implements BackwardCompatibleCo
 
     private const CONFIRMATION_ANSWER = 'yes';
 
-    protected static $defaultName = 'ibexa:migrate:legacy_matrix';
-
     /** @var \Doctrine\DBAL\Connection */
     private $connection;
 
@@ -54,7 +52,8 @@ class MigrateLegacyMatrixCommand extends Command implements BackwardCompatibleCo
     protected function configure()
     {
         $this
-            ->setAliases(['ezplatform:migrate:legacy_matrix'])
+            ->setName('ibexa:migrate:legacy_matrix')
+            ->setAliases($this->getDeprecatedAliases())
             ->addOption(
                 'iteration-count',
                 'c',
