@@ -5,5 +5,7 @@ services:
         public: false
 
     EzSystems\EzPlatformMatrixFieldtypeBundle\Command\MigrateLegacyMatrixCommand:
+        arguments:
+            - '@ezpublish.persistence.connection'
         tags:
-            - console.command
+            - { name: console.command }
