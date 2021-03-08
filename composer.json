@@ -36,6 +36,7 @@
         "symfony/options-resolver": "^5.0"
     },
     "require-dev": {
+        "ibexa/ci-scripts": "^0.1@dev",
         "ezsystems/doctrine-dbal-schema": "^1.0@dev",
         "ezsystems/ez-support-tools": "^2.0@dev",
         "ezsystems/ezplatform-admin-ui": "^2.0@dev",
@@ -51,10 +52,8 @@
         "fix-cs": "@php ./vendor/bin/php-cs-fixer fix -v --show-progress=estimating"
     },
     "extra": {
-        "_ezplatform_branch_for_behat_tests": "master",
         "branch-alias": {
-            "dev-master": "2.2.x-dev",
-            "dev-tmp_ci_branch": "2.2.x-dev"
+            "dev-master": "2.2.x-dev"
         }
     }
 }

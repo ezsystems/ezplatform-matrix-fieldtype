@@ -5,7 +5,7 @@ php:
 
 env:
   global:
-    - EZPLATFORM_REPO="https://github.com/ezsystems/ezplatform.git"
+    - PROJECT_VERSION=^3.3.x-dev
     - APP_ENV=behat
     - APP_DEBUG=1
 
@@ -29,7 +29,7 @@ matrix:
     - name: "Browser fieldtype tests"
       php: 7.3
       env: 
-        - BEHAT_OPTS="--mode=standard --profile=adminui --suite=adminuimodules"
+        - BEHAT_OPTS="--mode=standard --profile=adminui --suite=adminuimodules -c=behat_ibexa_oss.yaml"
         - COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/selenium.yml"
 
 notifications:
@@ -50,14 +50,14 @@ before_install:
 
 install:
   # Install packages if needed
-  - if [ "${CHECK_CS}" == "1" -o "${PHPUNIT_CONFIG}" != "" ]; then travis_retry composer install --prefer-dist --no-interaction --no-suggest ; fi
+  - travis_retry composer install --prefer-dist --no-interaction --no-suggest
   # Prepare whole environment if needed
-  - if [ "${BEHAT_OPTS}" != "" ]; then ./.travis/prepare_ezplatform.sh ${INSTALL_EZ_INSTALL_TYPE}; fi
+  - if [ "${BEHAT_OPTS}" != "" ]; then ./vendor/bin/prepare_project_edition.sh oss ${PROJECT_VERSION} ${COMPOSE_FILE} ; fi
 
 script:
-  - if [ "${CHECK_CS}" == "1" ] ; then ./vendor/bin/php-cs-fixer fix -v --dry-run --show-progress=estimating ; fi
+  - if [ "${CHECK_CS}" == "1" ] ; then ./vendor/bin/check_cs.sh ; fi
   - if [ "${PHPUNIT_CONFIG}" != '' ]; then ./vendor/bin/phpunit -c "${PHPUNIT_CONFIG}"; fi
-  - if [ "${BEHAT_OPTS}" != "" ]; then cd "$HOME/build/ezplatform"; docker-compose exec --user www-data app sh -c "bin/ezbehat ${BEHAT_OPTS}" ; fi
+  - if [ "${BEHAT_OPTS}" != "" ]; then cd "$HOME/build/project"; docker-compose exec --user www-data app sh -c "vendor/bin/ezbehat ${BEHAT_OPTS}" ; fi
 
 after_failure:
   # Will show us the last bit of the log of container's main processes
@@ -68,4 +68,4 @@ after_failure:
   - docker ps -s
 
 after_script:
-  - if [ "${BEHAT_OPTS}" != "" ] ; then bin/ezreport ; fi
+  - if [ "${BEHAT_OPTS}" != "" ] ; then vendor/bin/ezreport ; fi
