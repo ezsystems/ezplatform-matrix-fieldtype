@@ -3,8 +3,8 @@
     const SELECTOR_COLUMN = '.ez-matrix-settings__column';
     const SELECTOR_COLUMNS_CONTAINER = '.ez-table__body';
     const SELECTOR_COLUMN_CHECKBOX = '.ez-matrix-settings__column-checkbox';
-    const SELECTOR_ADD_COLUMN = '.ez-btn--add-column';
-    const SELECTOR_REMOVE_COLUMN = '.ez-btn--remove-column';
+    const SELECTOR_ADD_COLUMN = '.ibexa-btn--add-column';
+    const SELECTOR_REMOVE_COLUMN = '.ibexa-btn--remove-column';
     const SELECTOR_TEMPLATE = '.ez-matrix-settings__column-template';
     const NUMBER_PLACEHOLDER = /__number__/g;
 
