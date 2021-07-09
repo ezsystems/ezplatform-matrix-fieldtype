@@ -4,7 +4,7 @@
 
 {% block ezmatrix_field_definition_edit %}
     <div class="ez-matrix-settings__minimum-rows">
-        {{- form_label(form.minimum_rows, null, { 'label_attr': { 'class': 'ez-label' } }) -}}
+        {{- form_label(form.minimum_rows, null, { 'label_attr': { 'class': 'ibexa-label' } }) -}}
         {{- form_errors(form.minimum_rows) -}}
         {{- form_widget(form.minimum_rows) -}}
     </div>
@@ -23,7 +23,7 @@
                 </td>
             </tr>
         </script>
-        {{ form_label(form.columns, null, { 'label_attr': { 'class': 'ez-label' } }) }}
+        {{ form_label(form.columns, null, { 'label_attr': { 'class': 'ibexa-label' } }) }}
         {{ form_errors(form.columns) }}
         <div class="ez-table-header">
             <div class="ez-table-header__headline">{{ 'field.columns'|trans|desc('Columns') }}</div>
