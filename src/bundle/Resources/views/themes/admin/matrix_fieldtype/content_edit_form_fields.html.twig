@@ -4,59 +4,71 @@
     <script type="text/template" class="ez-data-source__entry-template">
         {{ form_row(form.entries.vars.prototype) }}
     </script>
-    <div class="ez-table-header ground-base">
-        <div class="ez-table-header__headline">
-            {{ form_label(form) }}
-        </div>
-        <div>
-            <button 
-                type="button" 
-                class="btn ibexa-btn ibexa-btn--ghost ibexa-btn--no-text ibexa-btn--add-matrix-entry"
-                title="{{ 'ezmatrix.add'|trans|desc('Add') }}"
-            >
-                <svg class="ibexa-icon ibexa-icon--small ibexa-icon--edit">
-                    <use xlink:href="{{ ibexa_icon_path('create') }}"></use>
-                </svg>
-            </button>
-            <button 
-                type="button" 
-                class="btn ibexa-btn ibexa-btn--ghost ibexa-btn--no-text ibexa-btn--remove-matrix-entry"
-                title="{{ 'ezmatrix.remove'|trans|desc('Remove') }}"
-            >
-                <svg class="ibexa-icon ibexa-icon--small ibexa-icon--edit">
-                    <use xlink:href="{{ ibexa_icon_path('trash') }}"></use>
-                </svg>
-            </button>
-        </div>
-    </div>
-    <div class="ez-scrollable-table-wrapper">
-        <table class="ez-table table table-hover">
-            <thead>
-            <tr>
-                <th></th>
-                {% for column in columns %}
-                    <th data-identifier="{{ column['identifier'] }}">{{ column['name'] }}</th>
-                {% endfor %}
-            </tr>
-            </thead>
-            <tbody class="ez-table__body" data-minimum-rows="{{ minimum_rows }}" data-next-index="{{ form.entries.children|length ? max(form.entries.children|keys) + 1 : 0 }}">
+
+    {% set head_cols = [{ has_checkbox: true }] %}
+    {% for column in columns %}
+        {% set head_cols = head_cols|merge([{
+            content: column['name'],
+            attr: {
+                'data-identifier': column['identifier'],
+            }
+        }]) %}
+    {% endfor %}
+
+    {% embed '@ezdesign/ui/component/table/table.html.twig' with {
+        headline: form.vars.label,
+        head_cols: head_cols,
+        table_body_attr: {
+            'data-minimum-rows': minimum_rows,
+            'data-next-index': form.entries.children|length ? max(form.entries.children|keys) + 1 : 0,
+        },
+    } %}
+        {% block header %}
+            {% embed '@ezdesign/ui/component/table/table_header.html.twig' %}
+                {% block actions %}
+                    <button
+                        type="button"
+                        class="btn ibexa-btn ibexa-btn--ghost ibexa-btn--no-text ibexa-btn--add-matrix-entry"
+                        title="{{ 'ezmatrix.add'|trans|desc('Add') }}"
+                    >
+                        <svg class="ibexa-icon ibexa-icon--small ibexa-icon--edit">
+                            <use xlink:href="{{ ibexa_icon_path('create') }}"></use>
+                        </svg>
+                    </button>
+                    <button
+                        type="button"
+                        class="btn ibexa-btn ibexa-btn--ghost ibexa-btn--no-text ibexa-btn--remove-matrix-entry"
+                        title="{{ 'ezmatrix.remove'|trans|desc('Remove') }}"
+                    >
+                        <svg class="ibexa-icon ibexa-icon--small ibexa-icon--edit">
+                            <use xlink:href="{{ ibexa_icon_path('trash') }}"></use>
+                        </svg>
+                    </button>
+                {% endblock %}
+            {% endembed %}
+        {% endblock %}
+        {% block tbody %}
             {{ form_widget(form) }}
-            </tbody>
-        </table>
-    </div>
+        {% endblock %}
+    {% endembed %}
 {% endblock %}
 
 {% block ezplatform_fieldtype_ezmatrix_entry_row %}
-    <tr class="ez-table__matrix-entry">
-        <td>
-            <input type="checkbox" class="ibexa-input ibexa-input--checkbox ez-table__ezmatrix-entry-checkbox">
-        </td>
-        {% for input in form.children %}
-            <td>
-                {{ form_widget(input) }}
-            </td>
-        {% endfor %}
-    </tr>
+    {% set col_checkbox %}
+        <input type="checkbox" class="ibexa-input ibexa-input--checkbox ibexa-table__ezmatrix-entry-checkbox">
+    {% endset %}
+
+    {% set body_row_cols = [{ has_checkbox: true, content: col_checkbox}] %}
+    {% for input in form.children %}
+        {% set body_row_cols = body_row_cols|merge([{
+            content: form_widget(input),
+        }]) %}
+    {% endfor %}
+
+    {% include '@ezdesign/ui/component/table/table_body_row.html.twig' with {
+        body_row_cols: body_row_cols,
+        class: 'ibexa-table__matrix-entry',
+    } %}
 {% endblock %}
 
 {% block _ezrepoforms_content_edit_fieldsData_entry_value_entries_entry_cell_widget %}

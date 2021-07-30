@@ -1,10 +1,10 @@
 (function(global, doc, eZ) {
     const SELECTOR_REMOVE_MATRIX_ENTRY = '.ibexa-btn--remove-matrix-entry';
     const SELECTOR_ADD_MATRIX_ENTRY = '.ibexa-btn--add-matrix-entry';
-    const SELECTOR_MATRIX_ENTRIES_CONTAINER = '.ez-table__body';
+    const SELECTOR_MATRIX_ENTRIES_CONTAINER = '.ibexa-table__body';
     const SELECTOR_MATRIX_ENTRY_TEMPLATE = '.ez-data-source__entry-template';
-    const SELECTOR_MATRIX_ENTRY_CHECKBOX = '.ez-table__ezmatrix-entry-checkbox';
-    const SELECTOR_MATRIX_ENTRY = '.ez-table__matrix-entry';
+    const SELECTOR_MATRIX_ENTRY_CHECKBOX = '.ibexa-table__ezmatrix-entry-checkbox';
+    const SELECTOR_MATRIX_ENTRY = '.ibexa-table__matrix-entry';
     const SELECTOR_FIELD = '.ez-field-edit--ezmatrix';
     const NUMBER_PLACEHOLDER = /__index__/g;
 

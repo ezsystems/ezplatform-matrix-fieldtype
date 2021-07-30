@@ -2,24 +2,25 @@
     {% set columnsSettings = fieldSettings['columns'] %}
     {% set fieldData = field.value.rows %}
 
-    <div class="ez-scrollable-table-wrapper">
-        <table class="ez-table table table-hover ez-table--no-bordered-top">
-            <thead>
-            <tr>
-                {% for column in columnsSettings %}
-                    <th>{{ column['name'] }}</th>
-                {% endfor %}
-            </tr>
-            </thead>
-            <tbody>
-            {% for data in fieldData %}
-                <tr>
-                    {% for column in columnsSettings %}
-                        <td>{{ data.cells[column['identifier']]|default }}</td>
-                    {% endfor %}
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
+    {% set body_rows = [] %}
+    {% for data in fieldData %}
+        {% set body_row_cols = [] %}
+        {% for column in columnsSettings %}
+            {% set body_row_cols = body_row_cols|merge([{ 
+                content: data.cells[column['identifier']]|default
+            }]) %}
+        {% endfor %}
+        {% set body_rows = body_rows|merge([{ cols: body_row_cols }]) %}
+    {% endfor %}
+
+    {% set head_cols = [] %}
+    {% for column in columnsSettings %}
+        {% set head_cols = head_cols|merge([{ content: column['name'] }]) %}
+    {% endfor %}
+
+    {% include '@ezdesign/ui/component/table/table.html.twig' with {
+        headline: 'field.columns'|trans|desc('Columns'),
+        head_cols: head_cols,
+        body_rows: body_rows,
+    } %}
 {% endblock %}
