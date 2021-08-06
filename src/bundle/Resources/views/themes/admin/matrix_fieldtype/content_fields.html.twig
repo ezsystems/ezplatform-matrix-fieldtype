@@ -6,7 +6,7 @@
     {% for data in fieldData %}
         {% set body_row_cols = [] %}
         {% for column in columnsSettings %}
-            {% set body_row_cols = body_row_cols|merge([{ 
+            {% set body_row_cols = body_row_cols|merge([{
                 content: data.cells[column['identifier']]|default
             }]) %}
         {% endfor %}

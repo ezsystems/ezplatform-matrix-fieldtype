@@ -29,7 +29,7 @@
         {% set body_rows = [] %}
         {% for column in form.columns %}
             {% set col_checkbox %}
-                <input type="checkbox" class="ibexa-input ibexa-input--checkbox ez-matrix-settings__column-checkbox" />
+                <input type="checkbox" class="ibexa-input ibexa-input--checkbox ez-matrix-settings__column-checkbox">
             {% endset %}
 
             {% set body_rows = body_rows|merge([{
