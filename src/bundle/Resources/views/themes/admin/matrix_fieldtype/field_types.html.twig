@@ -11,58 +11,65 @@
 
     <div class="ez-matrix-settings__columns">
         <script type="text/template" class="ez-matrix-settings__column-template">
-            <tr class="ez-matrix-settings__column">
-                <td>
-                    <input type="checkbox" class="ez-matrix-settings__column-checkbox">
-                </td>
-                <td>
-                    {{ form_widget(form.columns.vars.prototype.name) }}
-                </td>
-                <td>
-                    {{ form_widget(form.columns.vars.prototype.identifier) }}
-                </td>
-            </tr>
+            {% set col_checkbox %}
+                <input type="checkbox" class="ibexa-input ibexa-input--checkbox ez-matrix-settings__column-checkbox" />
+            {% endset %}
+
+            {% include '@ezdesign/ui/component/table/table_body_row.html.twig' with {
+                body_row_cols: [
+                    { has_checkbox: true, content: col_checkbox },
+                    { content: form_widget(form.columns.vars.prototype.name) },
+                    { content: form_widget(form.columns.vars.prototype.identifier) },
+                ],
+                class: 'ez-matrix-settings__column',
+            } %}
         </script>
         {{ form_label(form.columns, null, { 'label_attr': { 'class': 'ibexa-label' } }) }}
         {{ form_errors(form.columns) }}
-        <div class="ez-table-header">
-            <div class="ez-table-header__headline">{{ 'field.columns'|trans|desc('Columns') }}</div>
-            <div>
-                <button type="button" class="btn ibexa-btn ibexa-btn--ghost ibexa-btn--no-text ibexa-btn--add-column">
-                    <svg class="ibexa-icon ibexa-icon--small ibexa-icon--create">
-                        <use xlink:href="{{ ibexa_icon_path('create') }}"></use>
-                    </svg>
-                </button>
-                <button type="button" class="btn ibexa-btn ibexa-btn--ghost ibexa-btn--no-text ibexa-btn--remove-column">
-                    <svg class="ibexa-icon ibexa-icon--small ibexa-icon--trash">
-                        <use xlink:href="{{ ibexa_icon_path('trash') }}"></use>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <table class="ez-table table">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>{{ 'field.column.name'|trans|desc('Name') }}</th>
-                    <th>{{ 'field.column.identifier'|trans|desc('Identifier') }}</th>
-                </tr>
-            </thead>
-            <tbody class="ez-table__body" data-next-index="{{ form.columns.children|length ? max(form.columns.children|keys) + 1 : 0 }}">
-                {% for column in form.columns %}
-                    <tr class="ez-matrix-settings__column">
-                        <td>
-                            <input type="checkbox" class="ez-matrix-settings__column-checkbox">
-                        </td>
-                        <td>
-                            {{ form_widget(column.name) }}
-                        </td>
-                        <td>
-                            {{ form_widget(column.identifier) }}
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        {% set body_rows = [] %}
+        {% for column in form.columns %}
+            {% set col_checkbox %}
+                <input type="checkbox" class="ibexa-input ibexa-input--checkbox ez-matrix-settings__column-checkbox">
+            {% endset %}
+
+            {% set body_rows = body_rows|merge([{
+                cols: [
+                    { has_checkbox: true, content: col_checkbox },
+                    { content: form_widget(column.name) },
+                    { content: form_widget(column.identifier) },
+                ],
+                class: 'ez-matrix-settings__column',
+            }]) %}
+        {% endfor %}
+
+        {% embed '@ezdesign/ui/component/table/table.html.twig' with {
+            headline: 'field.columns'|trans|desc('Columns'),
+            head_cols: [
+                { has_checkbox: true },
+                { content: 'field.column.name'|trans|desc('Name') },
+                { content: 'field.column.identifier'|trans|desc('Identifier') },
+            ],
+            body_rows: body_rows,
+            table_body_attr: {
+                'data-next-index': form.columns.children|length ? max(form.columns.children|keys) + 1 : 0,
+            }
+        } %}
+            {% block header %}
+                {% embed '@ezdesign/ui/component/table/table_header.html.twig' %}
+                    {% block actions %}
+                        <button type="button" class="btn ibexa-btn ibexa-btn--ghost ibexa-btn--no-text ibexa-btn--add-column">
+                            <svg class="ibexa-icon ibexa-icon--small ibexa-icon--create">
+                                <use xlink:href="{{ ibexa_icon_path('create') }}"></use>
+                            </svg>
+                        </button>
+                        <button type="button" class="btn ibexa-btn ibexa-btn--ghost ibexa-btn--no-text ibexa-btn--remove-column">
+                            <svg class="ibexa-icon ibexa-icon--small ibexa-icon--trash">
+                                <use xlink:href="{{ ibexa_icon_path('trash') }}"></use>
+                            </svg>
+                        </button>
+                    {% endblock %}
+                {% endembed %}
+            {% endblock %}
+        {% endembed %}
     </div>
 {% endblock %}

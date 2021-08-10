@@ -1,7 +1,7 @@
 (function(global, doc) {
     const SELECTOR_SETTINGS_COLUMNS = '.ez-matrix-settings__columns';
     const SELECTOR_COLUMN = '.ez-matrix-settings__column';
-    const SELECTOR_COLUMNS_CONTAINER = '.ez-table__body';
+    const SELECTOR_COLUMNS_CONTAINER = '.ibexa-table__body';
     const SELECTOR_COLUMN_CHECKBOX = '.ez-matrix-settings__column-checkbox';
     const SELECTOR_ADD_COLUMN = '.ibexa-btn--add-column';
     const SELECTOR_REMOVE_COLUMN = '.ibexa-btn--remove-column';
