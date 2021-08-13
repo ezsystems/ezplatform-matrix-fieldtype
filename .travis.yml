@@ -29,7 +29,7 @@ matrix:
     - name: "Browser fieldtype tests"
       php: 7.3
       env: 
-        - BEHAT_OPTS="--mode=standard --profile=adminui --suite=adminuimodules -c=behat_ibexa_oss.yaml"
+        - BEHAT_OPTS="--mode=standard --profile=browser --suite=admin-ui -c=behat_ibexa_oss.yaml"
         - COMPOSE_FILE="doc/docker/base-dev.yml:doc/docker/selenium.yml"
 
 notifications:
