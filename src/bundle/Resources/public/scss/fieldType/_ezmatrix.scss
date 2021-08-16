@@ -1,6 +1,8 @@
 .ibexa-field-edit--ezmatrix {
-    .ibexa-data-source__field + .ibexa-form-error {
-        display: none;
+    .ibexa-data-source__field {
+        .ibexa-form-error {
+            display: none;
+        }
     }
 
     .ibexa-field-edit__data {

@@ -17,7 +17,6 @@
     {% set head_cols = head_cols|merge([{}]) %}
 
     {% embed '@ezdesign/ui/component/table/table.html.twig' with {
-        headline: form.vars.label,
         head_cols: head_cols,
         class: 'ibexa-table--not-striped',
         table_body_attr: {
@@ -27,7 +26,6 @@
     } %}
         {% block header %}
             {% embed '@ezdesign/ui/component/table/table_header.html.twig' %}
-                {% block headline %}{% endblock %}
                 {% block actions %}
                     <button
                         type="button"
