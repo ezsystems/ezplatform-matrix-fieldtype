@@ -12,4 +12,10 @@ module.exports = (eZConfig, eZConfigManager) => {
         entryName: 'ezplatform-admin-ui-content-edit-parts-js',
         newItems: [path.resolve(__dirname, '../public/js/scripts/fieldType/ezmatrix.js')],
     });
+
+    eZConfigManager.add({
+        eZConfig,
+        entryName: 'ezplatform-admin-ui-content-edit-parts-css',
+        newItems: [path.resolve(__dirname, '../public/scss/matrix.scss')],
+    });
 };

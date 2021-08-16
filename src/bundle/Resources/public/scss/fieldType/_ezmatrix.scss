@@ -1,0 +1,23 @@
+.ibexa-field-edit--ezmatrix {
+    .ibexa-data-source__field {
+        .ibexa-form-error {
+            display: none;
+        }
+    }
+
+    .ibexa-field-edit__data {
+        padding: calculateRem(24px);
+    }
+
+    .ibexa-table__matrix-entry {
+        .ibexa-input--text {
+            margin-bottom: 0;
+        }
+    }
+
+    .ibexa-table__cell {
+        .ibexa-btn--remove-matrix-entry {
+            padding: calculateRem(4px);
+        }
+    }
+}
