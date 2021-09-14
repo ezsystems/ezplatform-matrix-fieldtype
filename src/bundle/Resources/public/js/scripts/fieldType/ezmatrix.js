@@ -113,7 +113,7 @@
             doc.querySelectorAll(this.fieldSelector).forEach((field) => {
                 const rowsCount = field.querySelectorAll(SELECTOR_MATRIX_ENTRY).length;
                 const minimumRows = parseInt(field.querySelector(SELECTOR_MATRIX_ENTRIES_CONTAINER).dataset.minimumRows, 10);
-                const emptyEntriesAdded = field.dataset.emptyEntriesAdded;
+                const { emptyEntriesAdded } = field.dataset;
 
                 field.dataset.emptyEntriesAdded = true;
 

@@ -1,0 +1,14 @@
+{
+    "name": "ibexa-matrix-fieldtype",
+    "version": "1.0.0",
+    "description": "Ibexa Matrix Fieldtype",
+    "repository": "https://github.com/ezsystems/ezplatform-matrix-fieldtype.git",
+    "private": true,
+    "devDependencies": {
+        "eslint-config-ibexa": "https://github.com/ibexa/eslint-config-ibexa.git"
+    },
+    "scripts": {
+        "test": "yarn eslint-test",
+        "eslint-test": "eslint \"./src/bundle/**/*.js\""
+    }
+}
