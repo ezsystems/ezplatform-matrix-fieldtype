@@ -49,7 +49,9 @@
         "phpunit/phpunit": "^6.4"
     },
     "scripts": {
-        "fix-cs": "@php ./vendor/bin/php-cs-fixer fix -v --show-progress=estimating"
+        "fix-cs": "php-cs-fixer fix -v --show-progress=estimating",
+        "check-cs": "@fix-cs --dry-run",
+        "test": "phpunit -c phpunit-integration-legacy.xml"
     },
     "extra": {
         "branch-alias": {

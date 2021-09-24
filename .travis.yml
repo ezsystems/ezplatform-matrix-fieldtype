@@ -21,11 +21,6 @@ branches:
 
 matrix:
   include:
-    - name: "Code Style Check"
-      env: CHECK_CS=1
-    - name: "PHP 7.3 Integration tests"
-      php: 7.3
-      env: PHPUNIT_CONFIG="phpunit-integration-legacy.xml"
     - name: "Browser fieldtype tests"
       php: 7.3
       env: 
@@ -52,12 +47,10 @@ install:
   # Install packages if needed
   - travis_retry composer install --prefer-dist --no-interaction --no-suggest
   # Prepare whole environment if needed
-  - if [ "${BEHAT_OPTS}" != "" ]; then ./vendor/bin/prepare_project_edition.sh oss ${PROJECT_VERSION} ${COMPOSE_FILE} ; fi
+  - ./vendor/bin/prepare_project_edition.sh oss ${PROJECT_VERSION} ${COMPOSE_FILE}
 
 script:
-  - if [ "${CHECK_CS}" == "1" ] ; then ./vendor/bin/check_cs.sh ; fi
-  - if [ "${PHPUNIT_CONFIG}" != '' ]; then ./vendor/bin/phpunit -c "${PHPUNIT_CONFIG}"; fi
-  - if [ "${BEHAT_OPTS}" != "" ]; then cd "$HOME/build/project"; docker-compose exec --user www-data app sh -c "vendor/bin/ezbehat ${BEHAT_OPTS}" ; fi
+  - cd "$HOME/build/project"; docker-compose exec --user www-data app sh -c "vendor/bin/ezbehat ${BEHAT_OPTS}"
 
 after_failure:
   # Will show us the last bit of the log of container's main processes
@@ -68,4 +61,4 @@ after_failure:
   - docker ps -s
 
 after_script:
-  - if [ "${BEHAT_OPTS}" != "" ] ; then vendor/bin/ezreport ; fi
+  - vendor/bin/ezreport
