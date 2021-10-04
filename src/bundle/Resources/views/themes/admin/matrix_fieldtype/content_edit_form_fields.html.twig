@@ -26,6 +26,8 @@
     } %}
         {% block header %}
             {% embed '@ezdesign/ui/component/table/table_header.html.twig' %}
+                {% trans_default_domain 'matrix_fieldtype' %}
+
                 {% block actions %}
                     <button
                         type="button"
