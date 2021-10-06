@@ -6,7 +6,7 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformMatrixFieldtype\FieldType;
+namespace Ibexa\FieldTypeMatrix\FieldType;
 
 use eZ\Publish\SPI\FieldType\Indexable as IndexableInterface;
 use eZ\Publish\SPI\Persistence\Content\Field;
@@ -50,3 +50,5 @@ final class Indexable implements IndexableInterface
         return null;
     }
 }
+
+class_alias(Indexable::class, 'EzSystems\EzPlatformMatrixFieldtype\FieldType\Indexable');

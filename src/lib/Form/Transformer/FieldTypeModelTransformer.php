@@ -6,10 +6,10 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformMatrixFieldtype\Form\Transformer;
+namespace Ibexa\FieldTypeMatrix\Form\Transformer;
 
-use EzSystems\EzPlatformMatrixFieldtype\FieldType\Value;
-use EzSystems\EzPlatformMatrixFieldtype\FieldType\Value\Row;
+use Ibexa\FieldTypeMatrix\FieldType\Value;
+use Ibexa\FieldTypeMatrix\FieldType\Value\Row;
 use Symfony\Component\Form\DataTransformerInterface;
 
 class FieldTypeModelTransformer implements DataTransformerInterface
@@ -59,3 +59,5 @@ class FieldTypeModelTransformer implements DataTransformerInterface
         return new Value($rows ?? []);
     }
 }
+
+class_alias(FieldTypeModelTransformer::class, 'EzSystems\EzPlatformMatrixFieldtype\Form\Transformer\FieldTypeModelTransformer');

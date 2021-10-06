@@ -6,14 +6,14 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformMatrixFieldtype\FieldType;
+namespace Ibexa\FieldTypeMatrix\FieldType;
 
 use eZ\Publish\API\Repository\Values\ContentType\FieldDefinition;
 use eZ\Publish\Core\FieldType\FieldType;
 use eZ\Publish\Core\FieldType\ValidationError;
 use eZ\Publish\Core\FieldType\Value as FieldTypeValue;
 use eZ\Publish\SPI\FieldType\Value as SPIValue;
-use EzSystems\EzPlatformMatrixFieldtype\FieldType\Value\Row;
+use Ibexa\FieldTypeMatrix\FieldType\Value\Row;
 
 class Type extends FieldType
 {
@@ -216,3 +216,5 @@ class Type extends FieldType
         return true;
     }
 }
+
+class_alias(Type::class, 'EzSystems\EzPlatformMatrixFieldtype\FieldType\Type');

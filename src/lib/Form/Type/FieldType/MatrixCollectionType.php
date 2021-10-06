@@ -6,7 +6,7 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformMatrixFieldtype\Form\Type\FieldType;
+namespace Ibexa\FieldTypeMatrix\Form\Type\FieldType;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
@@ -72,3 +72,5 @@ class MatrixCollectionType extends AbstractType
         return CollectionType::class;
     }
 }
+
+class_alias(MatrixCollectionType::class, 'EzSystems\EzPlatformMatrixFieldtype\Form\Type\FieldType\MatrixCollectionType');

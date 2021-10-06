@@ -6,7 +6,7 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformMatrixFieldtype\Form\Type;
+namespace Ibexa\FieldTypeMatrix\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -38,3 +38,5 @@ class ColumnType extends AbstractType
         $resolver->setDefault('translation_domain', 'matrix_fieldtype');
     }
 }
+
+class_alias(ColumnType::class, 'EzSystems\EzPlatformMatrixFieldtype\Form\Type\ColumnType');

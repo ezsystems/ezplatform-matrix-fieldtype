@@ -4,9 +4,9 @@
  * @copyright Copyright (C) eZ Systems AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
-namespace EzSystems\EzPlatformMatrixFieldtype\GraphQL;
+namespace Ibexa\FieldTypeMatrix\GraphQL;
 
-use EzSystems\EzPlatformMatrixFieldtype\FieldType\Value\Row;
+use Ibexa\FieldTypeMatrix\FieldType\Value\Row;
 
 class SilentRow extends Row
 {
@@ -15,3 +15,5 @@ class SilentRow extends Row
         return $this->cells[$name] ?? '';
     }
 }
+
+class_alias(SilentRow::class, 'EzSystems\EzPlatformMatrixFieldtype\GraphQL\SilentRow');

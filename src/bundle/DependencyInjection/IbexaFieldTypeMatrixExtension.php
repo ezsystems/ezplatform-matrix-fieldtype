@@ -6,7 +6,7 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformMatrixFieldtypeBundle\DependencyInjection;
+namespace Ibexa\Bundle\FieldTypeMatrix\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Config\Resource\FileResource;
@@ -16,7 +16,7 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\Yaml\Yaml;
 
-class EzPlatformMatrixFieldtypeExtension extends Extension implements PrependExtensionInterface
+class IbexaFieldTypeMatrixExtension extends Extension implements PrependExtensionInterface
 {
     /**
      * Loads a specific configuration.
@@ -94,3 +94,5 @@ class EzPlatformMatrixFieldtypeExtension extends Extension implements PrependExt
         ]);
     }
 }
+
+class_alias(IbexaFieldTypeMatrixExtension::class, 'EzSystems\EzPlatformMatrixFieldtypeBundle\DependencyInjection\EzPlatformMatrixFieldtypeExtension');

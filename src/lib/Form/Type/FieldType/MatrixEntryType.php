@@ -6,7 +6,7 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformMatrixFieldtype\Form\Type\FieldType;
+namespace Ibexa\FieldTypeMatrix\Form\Type\FieldType;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -74,3 +74,5 @@ class MatrixEntryType extends AbstractType
         parent::buildForm($builder, $options);
     }
 }
+
+class_alias(MatrixEntryType::class, 'EzSystems\EzPlatformMatrixFieldtype\Form\Type\FieldType\MatrixEntryType');

@@ -6,7 +6,7 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformMatrixFieldtype\FieldType\Value;
+namespace Ibexa\FieldTypeMatrix\FieldType\Value;
 
 class Row
 {
@@ -61,3 +61,5 @@ class Row
         return isset($this->cells[$name]);
     }
 }
+
+class_alias(Row::class, 'EzSystems\EzPlatformMatrixFieldtype\FieldType\Value\Row');

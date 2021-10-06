@@ -6,10 +6,10 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformMatrixFieldtype\FieldType;
+namespace Ibexa\FieldTypeMatrix\FieldType;
 
 use eZ\Publish\Core\FieldType\Value as BaseValue;
-use EzSystems\EzPlatformMatrixFieldtype\FieldType\Value\RowsCollection;
+use Ibexa\FieldTypeMatrix\FieldType\Value\RowsCollection;
 
 class Value extends BaseValue
 {
@@ -50,3 +50,5 @@ class Value extends BaseValue
         return '';
     }
 }
+
+class_alias(Value::class, 'EzSystems\EzPlatformMatrixFieldtype\FieldType\Value');

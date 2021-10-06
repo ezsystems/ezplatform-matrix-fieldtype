@@ -6,14 +6,14 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformMatrixFieldtype\FieldType\Mapper;
+namespace Ibexa\FieldTypeMatrix\FieldType\Mapper;
 
 use EzSystems\EzPlatformAdminUi\FieldType\FieldDefinitionFormMapperInterface;
 use EzSystems\EzPlatformAdminUi\Form\Data\FieldDefinitionData;
 use EzSystems\EzPlatformContentForms\Data\Content\FieldData;
 use EzSystems\EzPlatformContentForms\FieldType\FieldValueFormMapperInterface;
-use EzSystems\EzPlatformMatrixFieldtype\Form\Type\ColumnType;
-use EzSystems\EzPlatformMatrixFieldtype\Form\Type\FieldType\MatrixFieldType;
+use Ibexa\FieldTypeMatrix\Form\Type\ColumnType;
+use Ibexa\FieldTypeMatrix\Form\Type\FieldType\MatrixFieldType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormInterface;
@@ -86,3 +86,5 @@ class MatrixFormMapper implements FieldDefinitionFormMapperInterface, FieldValue
             );
     }
 }
+
+class_alias(MatrixFormMapper::class, 'EzSystems\EzPlatformMatrixFieldtype\FieldType\Mapper\MatrixFormMapper');

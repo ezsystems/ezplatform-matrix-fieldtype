@@ -6,11 +6,11 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformMatrixFieldtype\Form\Type\FieldType;
+namespace Ibexa\FieldTypeMatrix\Form\Type\FieldType;
 
-use EzSystems\EzPlatformMatrixFieldtype\FieldType\Value\Row;
-use EzSystems\EzPlatformMatrixFieldtype\FieldType\Value\RowsCollection;
-use EzSystems\EzPlatformMatrixFieldtype\Form\Transformer\FieldTypeModelTransformer;
+use Ibexa\FieldTypeMatrix\FieldType\Value\Row;
+use Ibexa\FieldTypeMatrix\FieldType\Value\RowsCollection;
+use Ibexa\FieldTypeMatrix\Form\Transformer\FieldTypeModelTransformer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
@@ -92,3 +92,5 @@ class MatrixFieldType extends AbstractType
         $builder->addModelTransformer(new FieldTypeModelTransformer());
     }
 }
+
+class_alias(MatrixFieldType::class, 'EzSystems\EzPlatformMatrixFieldtype\Form\Type\FieldType\MatrixFieldType');

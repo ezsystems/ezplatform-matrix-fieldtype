@@ -6,11 +6,11 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformMatrixFieldtype\GraphQL;
+namespace Ibexa\FieldTypeMatrix\GraphQL;
 
 use eZ\Publish\SPI\FieldType\Value;
 use EzSystems\EzPlatformGraphQL\GraphQL\Mutation\InputHandler\FieldTypeInputHandler;
-use EzSystems\EzPlatformMatrixFieldtype\FieldType\Value as MatrixValue;
+use Ibexa\FieldTypeMatrix\FieldType\Value as MatrixValue;
 
 class InputHandler implements FieldTypeInputHandler
 {
@@ -26,3 +26,5 @@ class InputHandler implements FieldTypeInputHandler
         );
     }
 }
+
+class_alias(InputHandler::class, 'EzSystems\EzPlatformMatrixFieldtype\GraphQL\InputHandler');

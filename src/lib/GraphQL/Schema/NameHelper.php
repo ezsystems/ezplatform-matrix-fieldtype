@@ -6,7 +6,7 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformMatrixFieldtype\GraphQL\Schema;
+namespace Ibexa\FieldTypeMatrix\GraphQL\Schema;
 
 use eZ\Publish\API\Repository\Values\ContentType\ContentType;
 use eZ\Publish\API\Repository\Values\ContentType\FieldDefinition;
@@ -36,3 +36,5 @@ class NameHelper
         );
     }
 }
+
+class_alias(NameHelper::class, 'EzSystems\EzPlatformMatrixFieldtype\GraphQL\Schema\NameHelper');

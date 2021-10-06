@@ -6,7 +6,7 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformMatrixFieldtype\GraphQL\Schema;
+namespace Ibexa\FieldTypeMatrix\GraphQL\Schema;
 
 use eZ\Publish\API\Repository\Values\ContentType\ContentType;
 use eZ\Publish\API\Repository\Values\ContentType\FieldDefinition;
@@ -57,3 +57,5 @@ class MatrixFieldDefinitionInputSchemaWorker implements Worker
         return $this->nameHelper->matrixFieldDefinitionInputType($args['ContentType'], $args['FieldDefinition']);
     }
 }
+
+class_alias(MatrixFieldDefinitionInputSchemaWorker::class, 'EzSystems\EzPlatformMatrixFieldtype\GraphQL\Schema\MatrixFieldDefinitionInputSchemaWorker');

@@ -6,7 +6,7 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformMatrixFieldtype\FieldType\Converter;
+namespace Ibexa\FieldTypeMatrix\FieldType\Converter;
 
 use eZ\Publish\Core\FieldType\FieldSettings;
 use eZ\Publish\Core\Persistence\Legacy\Content\FieldValue\Converter;
@@ -102,3 +102,5 @@ class MatrixConverter implements Converter
         return false;
     }
 }
+
+class_alias(MatrixConverter::class, 'EzSystems\EzPlatformMatrixFieldtype\FieldType\Converter\MatrixConverter');

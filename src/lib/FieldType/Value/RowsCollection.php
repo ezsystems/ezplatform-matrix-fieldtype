@@ -6,7 +6,7 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformMatrixFieldtype\FieldType\Value;
+namespace Ibexa\FieldTypeMatrix\FieldType\Value;
 
 use ArrayObject;
 use eZ\Publish\Core\Base\Exceptions\InvalidArgumentType;
@@ -46,3 +46,5 @@ class RowsCollection extends ArrayObject
         parent::offsetSet($offset, $value);
     }
 }
+
+class_alias(RowsCollection::class, 'EzSystems\EzPlatformMatrixFieldtype\FieldType\Value\RowsCollection');

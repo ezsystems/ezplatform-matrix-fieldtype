@@ -1,5 +1,5 @@
 {
-    "name": "ezsystems/ezplatform-matrix-fieldtype",
+    "name": "ibexa/fieldtype-matrix",
     "description": "Repository dedicated to Matrix Field Type for eZ Platform",
     "type": "library",
     "license": "GPL-2.0-only",
@@ -12,13 +12,17 @@
     "autoload": {
         "psr-4": {
             "EzSystems\\EzPlatformMatrixFieldtypeBundle\\": "src/bundle/",
-            "EzSystems\\EzPlatformMatrixFieldtype\\": "src/lib/"
+            "EzSystems\\EzPlatformMatrixFieldtype\\": "src/lib/",
+            "Ibexa\\FieldTypeMatrix\\": "src/lib/",
+            "Ibexa\\Bundle\\FieldTypeMatrix\\": "src/bundle/",
+            "Ibexa\\Contracts\\FieldTypeMatrix\\": "src/contracts/",
+            "Ibexa\\Tests\\FieldTypeMatrix\\": "tests/"
         }
     },
     "autoload-dev": {
-      "psr-4": {
-        "EzSystems\\EzPlatformMatrixFieldtype\\Integration\\Tests\\": "tests/integration/"
-      }
+        "psr-4": {
+            "EzSystems\\EzPlatformMatrixFieldtype\\Integration\\Tests\\": "tests/integration/"
+        }
     },
     "require": {
         "php": "^7.3",
@@ -56,7 +60,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "4.0.x-dev"
+            "dev-main": "4.0.x-dev"
         }
     }
 }

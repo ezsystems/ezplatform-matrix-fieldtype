@@ -6,10 +6,12 @@
  */
 declare(strict_types=1);
 
-namespace EzSystems\EzPlatformMatrixFieldtypeBundle;
+namespace Ibexa\Bundle\FieldTypeMatrix;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class EzPlatformMatrixFieldtypeBundle extends Bundle
+class IbexaFieldtypeMatrixBundle extends Bundle
 {
 }
+
+class_alias(IbexaFieldtypeMatrixBundle::class, 'EzSystems\EzPlatformMatrixFieldtypeBundle\EzPlatformMatrixFieldtypeBundle');
