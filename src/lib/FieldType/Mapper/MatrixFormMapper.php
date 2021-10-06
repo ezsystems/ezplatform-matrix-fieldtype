@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 declare(strict_types=1);
@@ -27,8 +27,8 @@ class MatrixFormMapper implements FieldDefinitionFormMapperInterface, FieldValue
      * - field settings
      * - default value.
      *
-     * @param FormInterface $fieldDefinitionForm form for current FieldDefinition
-     * @param FieldDefinitionData $data underlying data for current FieldDefinition form
+     * @param \Symfony\Component\Form\FormInterface $fieldDefinitionForm form for current FieldDefinition
+     * @param \EzSystems\EzPlatformAdminUi\Form\Data\FieldDefinitionData $data underlying data for current FieldDefinition form
      */
     public function mapFieldDefinitionForm(FormInterface $fieldDefinitionForm, FieldDefinitionData $data): void
     {
@@ -61,8 +61,8 @@ class MatrixFormMapper implements FieldDefinitionFormMapperInterface, FieldValue
      * Maps Field form to current FieldType.
      * Allows to add form fields for content edition.
      *
-     * @param FormInterface $fieldForm form for the current Field
-     * @param FieldData $data underlying data for current Field form
+     * @param \Symfony\Component\Form\FormInterface $fieldForm form for the current Field
+     * @param \EzSystems\EzPlatformContentForms\Data\Content\FieldData $data underlying data for current Field form
      */
     public function mapFieldValueForm(FormInterface $fieldForm, FieldData $data): void
     {

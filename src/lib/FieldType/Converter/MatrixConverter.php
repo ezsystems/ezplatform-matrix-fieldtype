@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
 declare(strict_types=1);
@@ -59,7 +59,7 @@ class MatrixConverter implements Converter
         $columns = array_values($fieldSettings['columns']);
         $minimumRows = (int)$fieldSettings['minimum_rows'];
 
-        array_walk($columns, function ($column) {
+        array_walk($columns, static function ($column) {
             return [
                 'identifier' => trim($column['identifier'] ?? ''),
                 'name' => trim($column['name'] ?? ''),

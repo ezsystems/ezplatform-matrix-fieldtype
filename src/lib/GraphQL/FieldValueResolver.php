@@ -1,9 +1,11 @@
 <?php
 
 /**
- * @copyright Copyright (C) eZ Systems AS. All rights reserved.
+ * @copyright Copyright (C) Ibexa AS. All rights reserved.
  * @license For full copyright and license information view LICENSE file distributed with this source code.
  */
+declare(strict_types=1);
+
 namespace Ibexa\FieldTypeMatrix\GraphQL;
 
 use eZ\Publish\API\Repository\Values\Content\Content;
@@ -15,7 +17,7 @@ class FieldValueResolver
     {
         $silentRows = [];
 
-        /** @var RowsCollection $rows $rows */
+        /** @var \Ibexa\FieldTypeMatrix\FieldType\Value\RowsCollection $rows $rows */
         $rows = $content->getFieldValue($fieldDefIdentifier)->getRows();
         foreach ($rows as $row) {
             $silentRows[] = new SilentRow($row->getCells());
