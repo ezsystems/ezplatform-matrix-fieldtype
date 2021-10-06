@@ -7,7 +7,7 @@ services:
         autowire: true
         public: false
 
-    EzSystems\EzPlatformMatrixFieldtype\FieldType\Type:
+    Ibexa\FieldTypeMatrix\FieldType\Type:
         autoconfigure: false
         autowire: true
         public: true
@@ -17,15 +17,15 @@ services:
         tags:
             - { name: ezplatform.field_type, alias: '%ezplatform.fieldtype.matrix.identifier%' }
 
-    EzSystems\EzPlatformMatrixFieldtype\FieldType\Converter\MatrixConverter:
+    Ibexa\FieldTypeMatrix\FieldType\Converter\MatrixConverter:
         tags:
             - { name: ezplatform.field_type.legacy_storage.converter, alias: '%ezplatform.fieldtype.matrix.identifier%' }
 
-    EzSystems\EzPlatformMatrixFieldtype\FieldType\Mapper\MatrixFormMapper:
+    Ibexa\FieldTypeMatrix\FieldType\Mapper\MatrixFormMapper:
         tags:
             - { name: ezplatform.field_type.form_mapper.definition, fieldType: '%ezplatform.fieldtype.matrix.identifier%' }
             - { name: ezplatform.field_type.form_mapper.value, fieldType: '%ezplatform.fieldtype.matrix.identifier%' }
 
-    EzSystems\EzPlatformMatrixFieldtype\FieldType\Indexable:
+    Ibexa\FieldTypeMatrix\FieldType\Indexable:
         tags:
             - { name: ezplatform.field_type.indexable, alias: '%ezplatform.fieldtype.matrix.identifier%' }

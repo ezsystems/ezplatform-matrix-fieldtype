@@ -4,25 +4,25 @@ services:
         autoconfigure: true
         public: false
 
-    EzSystems\EzPlatformMatrixFieldtype\GraphQL\Schema\MatrixFieldDefinitionMapper:
+    Ibexa\FieldTypeMatrix\GraphQL\Schema\MatrixFieldDefinitionMapper:
         decorates: EzSystems\EzPlatformGraphQL\Schema\Domain\Content\Mapper\FieldDefinition\FieldDefinitionMapper
         arguments:
-            $innerMapper: '@EzSystems\EzPlatformMatrixFieldtype\GraphQL\Schema\MatrixFieldDefinitionMapper.inner'
+            $innerMapper: '@Ibexa\FieldTypeMatrix\GraphQL\Schema\MatrixFieldDefinitionMapper.inner'
 
-    EzSystems\EzPlatformMatrixFieldtype\GraphQL\Schema\NameHelper: ~
+    Ibexa\FieldTypeMatrix\GraphQL\Schema\NameHelper: ~
 
-    EzSystems\EzPlatformMatrixFieldtype\GraphQL\Schema\MatrixFieldDefinitionSchemaWorker:
+    Ibexa\FieldTypeMatrix\GraphQL\Schema\MatrixFieldDefinitionSchemaWorker:
         tags:
             - { name: ezplatform_graphql.domain_schema_worker }
 
-    EzSystems\EzPlatformMatrixFieldtype\GraphQL\Schema\MatrixFieldDefinitionInputSchemaWorker:
+    Ibexa\FieldTypeMatrix\GraphQL\Schema\MatrixFieldDefinitionInputSchemaWorker:
         tags:
             - { name: ezplatform_graphql.domain_schema_worker }
 
-    EzSystems\EzPlatformMatrixFieldtype\GraphQL\InputHandler:
+    Ibexa\FieldTypeMatrix\GraphQL\InputHandler:
         tags:
             - { name: ezplatform_graphql.fieldtype_input_handler, fieldtype: ezmatrix }
 
-    EzSystems\EzPlatformMatrixFieldtype\GraphQL\FieldValueResolver:
+    Ibexa\FieldTypeMatrix\GraphQL\FieldValueResolver:
         tags:
             - {name: overblog_graphql.resolver, alias: "MatrixFieldValue", method: "resolveMatrixFieldValue"}
