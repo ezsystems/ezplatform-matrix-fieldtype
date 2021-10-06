@@ -49,7 +49,7 @@
         "ezsystems/ezplatform-rest": "^4.0@dev",
         "ezsystems/ezplatform-http-cache": "^4.0@dev",
         "ezsystems/ezplatform-design-engine": "^4.0@dev",
-        "ezsystems/ezplatform-code-style": "^0.1.0",
+        "ezsystems/ezplatform-code-style": "^1.0",
         "friendsofphp/php-cs-fixer": "^2.16.0",
         "phpunit/phpunit": "^6.4"
     },
