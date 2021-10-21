@@ -49,7 +49,7 @@
                 { content: 'field.column.name'|trans|desc('Name') },
                 { content: 'field.column.identifier'|trans|desc('Identifier') },
             ],
-            body_rows: body_rows,
+            body_rows,
             table_body_attr: {
                 'data-next-index': form.columns.children|length ? max(form.columns.children|keys) + 1 : 0,
             }
