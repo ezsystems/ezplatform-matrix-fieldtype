@@ -17,9 +17,9 @@
 
             {% include '@ezdesign/ui/component/table/table_body_row.html.twig' with {
                 body_row_cols: [
-                    { has_checkbox: true, content: col_checkbox },
-                    { content: form_widget(form.columns.vars.prototype.name) },
-                    { content: form_widget(form.columns.vars.prototype.identifier) },
+                    { has_checkbox: true, content: col_checkbox, raw: true },
+                    { content: form_widget(form.columns.vars.prototype.name), raw: true },
+                    { content: form_widget(form.columns.vars.prototype.identifier), raw: true },
                 ],
                 class: 'ez-matrix-settings__column',
             } %}
@@ -34,9 +34,9 @@
 
             {% set body_rows = body_rows|merge([{
                 cols: [
-                    { has_checkbox: true, content: col_checkbox },
-                    { content: form_widget(column.name) },
-                    { content: form_widget(column.identifier) },
+                    { has_checkbox: true, content: col_checkbox, raw: true },
+                    { content: form_widget(column.name), raw: true },
+                    { content: form_widget(column.identifier), raw: true },
                 ],
                 class: 'ez-matrix-settings__column',
             }]) %}
@@ -49,7 +49,7 @@
                 { content: 'field.column.name'|trans|desc('Name') },
                 { content: 'field.column.identifier'|trans|desc('Identifier') },
             ],
-            body_rows: body_rows,
+            body_rows,
             table_body_attr: {
                 'data-next-index': form.columns.children|length ? max(form.columns.children|keys) + 1 : 0,
             }

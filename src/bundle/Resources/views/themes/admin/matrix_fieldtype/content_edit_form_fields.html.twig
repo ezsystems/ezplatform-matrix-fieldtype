@@ -17,7 +17,7 @@
     {% set head_cols = head_cols|merge([{}]) %}
 
     {% embed '@ezdesign/ui/component/table/table.html.twig' with {
-        head_cols: head_cols,
+        head_cols,
         class: 'ibexa-table--not-striped',
         table_body_attr: {
             'data-minimum-rows': minimum_rows,
@@ -81,7 +81,7 @@
     {% set body_row_cols = body_row_cols|merge([{ content: col_actions }]) %}
 
     {% include '@ezdesign/ui/component/table/table_body_row.html.twig' with {
-        body_row_cols: body_row_cols,
+        body_row_cols,
         class: 'ibexa-table__matrix-entry',
     } %}
 {% endblock %}
