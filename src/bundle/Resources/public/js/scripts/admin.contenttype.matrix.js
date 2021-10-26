@@ -70,10 +70,8 @@
                 }
 
                 initComponent(container);
-
             });
         },
         false,
     );
-
 })(window, document);
