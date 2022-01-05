@@ -33,7 +33,7 @@ class RowsCollection extends ArrayObject
      *
      * @throws \eZ\Publish\Core\Base\Exceptions\InvalidArgumentType
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (!$value instanceof Row) {
             throw new InvalidArgumentType(
