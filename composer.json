@@ -16,15 +16,15 @@
         }
     },
     "autoload-dev": {
-      "psr-4": {
-        "EzSystems\\EzPlatformMatrixFieldtype\\Integration\\Tests\\": "tests/integration/"
-      }
+        "psr-4": {
+            "EzSystems\\EzPlatformMatrixFieldtype\\Integration\\Tests\\": "tests/integration/"
+        }
     },
     "require": {
         "php": "^7.1",
         "ext-libxml": "*",
         "ext-simplexml": "*",
-        "ezsystems/ezplatform-graphql": "^1.0.4@dev"
+        "ezsystems/ezplatform-graphql": "^1.0.4"
     },
     "require-dev": {
         "ezsystems/ezplatform-code-style": "^0.1.0",
